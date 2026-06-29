@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-clinical-bg: #FFFFFF;
+  --color-clinical-surface: #FAFAFA;
+  --color-clinical-text: #0F172A;
+  --color-clinical-border: #E2E8F0;
+  --color-clinical-accent: #1E40AF;
+  --color-clinical-success: #16A34A;
+  --color-clinical-warning: #D97706;
+  --color-clinical-danger: #DC2626;
+
+  --font-sans: var(--font-plus-jakarta), var(--font-inter), ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular;
+
+  /* Shadcn UI mapping */
+  --color-background: var(--color-clinical-bg);
+  --color-foreground: var(--color-clinical-text);
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-card: #FFFFFF;
+  --color-card-foreground: var(--color-clinical-text);
+  --color-border: var(--color-clinical-border);
+  --color-input: var(--color-clinical-border);
+  --color-primary: var(--color-clinical-accent);
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F1F5F9;
+  --color-secondary-foreground: #0F172A;
+  --color-accent: #F1F5F9;
+  --color-accent-foreground: #0F172A;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-clinical-bg);
+  color: var(--color-clinical-text);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Scrollbar for sterile look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-clinical-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-clinical-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Clinical layout helper utilities */
+.clinical-grid {
+  display: grid;
+  border-top: 1px solid var(--color-clinical-border);
+  border-left: 1px solid var(--color-clinical-border);
+}
+
+.clinical-grid-item {
+  border-right: 1px solid var(--color-clinical-border);
+  border-bottom: 1px solid var(--color-clinical-border);
+  background-color: var(--color-clinical-surface);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stagger animations support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}

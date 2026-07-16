@@ -131,7 +131,7 @@ export default function WhatWeProvide({
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number]
       }
     }
   }
@@ -183,7 +183,7 @@ export default function WhatWeProvide({
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.id}
               variants={itemVariants}

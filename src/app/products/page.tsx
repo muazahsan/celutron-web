@@ -31,30 +31,34 @@ export default function ProductsPage() {
     {
       id: "ready-to-use",
       title: "Ready to Use",
-      products: "CeluLife Bioink, CeluMatrix-LV, CeluMatrix-HV",
+      products: ["CeluLife Bioink", "CeluMatrix-LV", "CeluMatrix-HV"],
       desc: "Get printing immediately with standard bioinks in ready-to-use cartridges.",
       image: "/assets/celulife-bioink.jpg",
+      link: "/products/bioinks/ready-to-use",
     },
     {
       id: "training",
       title: "Training Bioinks",
-      products: "CeluLife Trial",
+      products: ["CeluLife Trial"],
       desc: "Optimized for learning and protocol development without using live cell material.",
       image: "/assets/celulife-trial.jpg",
+      link: "/products/bioinks/training",
     },
     {
       id: "biotron-inks",
       title: "BioTron Inks",
-      products: "CeluLife-Alg, CeluLife-Gel",
+      products: ["CeluLife-Alg", "CeluLife-Gel"],
       desc: "Formulated and validated specifically for BioTron hardware systems.",
       image: "/assets/celulife-alg.jpg",
+      link: "/products/bioinks/biotron-inks",
     },
     {
       id: "custom",
       title: "Custom / Enquiry",
-      products: "Patient-Specific Formulations",
+      products: ["Patient-Specific Formulations"],
       desc: "Patient-specific formulations built from your own cell lines. Contact us to begin formulation.",
       isCustom: true,
+      link: "/products/bioinks/custom",
     },
   ];
 
@@ -182,9 +186,10 @@ export default function ProductsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {bioinkCategories.map((cat) => (
-                <div
+                <Link
                   key={cat.id}
-                  className="border border-clinical-border bg-white flex flex-col justify-between hover:border-clinical-accent/30 transition-colors p-6"
+                  href={cat.link}
+                  className="border border-clinical-border bg-white flex flex-col justify-between hover:border-clinical-accent/30 hover:shadow-sm transition-all p-6 group/card"
                 >
                   <div className="space-y-4">
                     {!cat.isCustom && cat.image && (
@@ -203,13 +208,25 @@ export default function ProductsPage() {
                         <FlaskConical className="h-12 w-12" />
                       </div>
                     )}
-                    <div>
+                    <div className="space-y-3">
                       <h3 className="text-lg font-semibold text-clinical-text">
                         {cat.title}
                       </h3>
-                      <span className="font-mono text-[9px] text-clinical-text/40 block mt-1 uppercase font-bold">
-                        {cat.products}
-                      </span>
+                      {/* Product chips */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {cat.products.map((product) => (
+                          <span
+                            key={product}
+                            className={`inline-block font-mono text-[9px] font-bold uppercase tracking-widest px-2 py-1 border ${
+                              cat.isCustom
+                                ? "border-clinical-accent/20 bg-clinical-accent/5 text-clinical-accent"
+                                : "border-clinical-border bg-clinical-surface text-clinical-text/50"
+                            }`}
+                          >
+                            {product}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                     <p className="text-xs text-clinical-text/60 leading-relaxed font-light">
                       {cat.desc}
@@ -217,24 +234,14 @@ export default function ProductsPage() {
                   </div>
 
                   <div className="pt-6 border-t border-clinical-border/50 mt-6">
-                    {cat.isCustom ? (
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1 text-xs font-bold text-clinical-accent hover:underline uppercase tracking-wider"
-                      >
-                        Enquire
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    ) : (
-                      <Link
-                        href="/contact?type=product"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-clinical-text/70 hover:text-clinical-accent transition-colors"
-                      >
-                        Order Cartridges →
-                      </Link>
-                    )}
+                    <span
+                      className="inline-flex items-center gap-1 text-xs font-bold text-clinical-accent group-hover/card:underline uppercase tracking-wider"
+                    >
+                      {cat.isCustom ? "Enquire" : "See All Products"}
+                      <ArrowRight className="h-3 w-3" />
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

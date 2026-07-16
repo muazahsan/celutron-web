@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Meta Header -->
+  <title>Tissue Engineering Research — Celutron</title>
+  <meta name="description" content="Scientific publications, research areas, and R&D development timelines of Celutron Innovations.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium clinical styling */
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: #09090b;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .font-mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    /* Grid pattern helper */
+    .grid-bg {
+      background-image: linear-gradient(to right, rgba(226, 232, 240, 0.3) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(226, 232, 240, 0.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .card-grid-bg {
+      background-image: linear-gradient(to right, rgba(226, 232, 240, 0.25) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(226, 232, 240, 0.25) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    @keyframes grid-pan {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 160px 160px;
+      }
+    }
+    .animate-clinical-grid {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 36 L 40 44 M 36 40 L 44 40' stroke='rgba(13,148,136,0.18)' stroke-width='1'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='rgba(13,148,136,0.12)'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+      animation: grid-pan 35s linear infinite;
+    }
+    .animate-hex-grid {
+      background-image: url("data:image/svg+xml,%3Csvg width='56' height='100' viewBox='0 0 56 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0 L56 16.16 L56 48.48 L28 64.64 L0 48.48 L0 16.16 Z M28 100 L56 83.84 L56 51.52 L28 35.36 L0 51.52 L0 83.84 Z' fill='none' stroke='rgba(16,185,129,0.09)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+      animation: grid-pan 45s linear infinite;
+    }
+    .animate-blueprint-grid {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(9,9,11,0.12)'/%3E%3Crect x='0' y='0' width='60' height='60' fill='none' stroke='rgba(9,9,11,0.03)' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      animation: grid-pan 50s linear infinite;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* SVG stroke animation */
+    @keyframes drawStroke {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    .animate-draw {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawStroke 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  </style>
+</head>
+<body class="selection:bg-teal-500/10 selection:text-teal-900">
+
+  <!-- Simple Navigation Bar -->
+  <header class="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/80 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 sm:px-10 lg:px-16">
+      <div class="flex items-center gap-3">
+        <span class="h-6 w-6 rounded-sm bg-zinc-950 flex items-center justify-center font-mono text-xs font-bold text-white">C</span>
+        <span class="font-mono text-xs font-bold tracking-widest uppercase">Celutron</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 font-mono text-xs font-bold text-zinc-500">
+        <a href="/" class="hover:text-zinc-950">Home</a>
+        <a href="/about" class="hover:text-zinc-950">About</a>
+        <a href="/products" class="hover:text-zinc-950">Products</a>
+        <a href="#" class="text-teal-600 border-b border-teal-500 pb-1">Research</a>
+        <a href="/contact" class="hover:text-zinc-950">Contact</a>
+      </nav>
+      <div class="flex items-center">
+        <a href="/contact?type=demo" class="border border-zinc-950 bg-zinc-950 px-4 py-2 font-mono text-xs font-bold text-white hover:bg-transparent hover:text-zinc-950 transition-all duration-200">
+          Request Lab Consultation
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero Section (Wider & With Background Image) -->
+    <section class="relative overflow-hidden border-b border-zinc-200 bg-white py-36 lg:py-48 bg-cover bg-center" style="background-image: url('clinical_hero_bg.png')">
+      <!-- Glassmorphic overlay -->
+      <div class="absolute inset-0 bg-white/80 backdrop-blur-[2px] -z-10"></div>
+      
+      <!-- Glowing bubble -->
+      <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-teal-200/20 rounded-full filter blur-3xl pointer-events-none animate-pulse"></div>
+
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 relative">
+        <div class="max-w-5xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50/90 px-4 py-1.5 text-xs sm:text-sm font-mono font-medium text-teal-900 shadow-sm backdrop-blur-sm">
+            <span class="h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
+            STANDALONE SYSTEM SHEET // RESEARCH PORTFOLIO
+          </div>
+          <h1 class="text-5xl font-light tracking-tight text-zinc-950 sm:text-7xl lg:text-8xl leading-[1.05]">
+            Science that moves <br>
+            <span class="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">medicine forward</span>.
+          </h1>
+          <p class="text-xl sm:text-2xl text-zinc-900 font-semibold leading-relaxed max-w-3xl">
+            Celutron's research programs span the full tissue engineering pipeline, from fundamental biomaterial science to clinical-grade tissue fabrication systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive Focus Areas & Studies Grid (Wider Layout) -->
+    <section class="py-28 border-b border-zinc-200 bg-slate-50 relative overflow-hidden">
+      <!-- Engineering grid pattern background -->
+      <div class="absolute inset-0 pointer-events-none animate-clinical-grid"></div>
+      
+      <!-- Dynamic soft radial glows -->
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-white via-white/50 to-transparent pointer-events-none"></div>
+      <div class="absolute top-1/4 left-1/4 -translate-x-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full filter blur-[120px] pointer-events-none animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 relative z-10">
+        <!-- Header -->
+        <div class="mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 bg-teal-600 rounded-full"></span>
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-teal-600 uppercase">CORE INFRASTRUCTURE</span>
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-light tracking-tight text-zinc-900">Active Research Areas</h2>
+          <p class="text-base text-zinc-500 font-light max-w-2xl leading-relaxed">
+            Hover or select a research competency to view its active clinical validation study, engineering specifications, and custom CAD schematic.
+          </p>
+        </div>
+
+        <!-- Interactive Grid System: Spreading Columns (Col 4 and Col 8) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left Column: 6 Research Areas (Col-span 4) -->
+          <div class="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5" id="research-areas-list">
+            <!-- Rendered by Javascript -->
+          </div>
+
+          <!-- Right Column: Active Study Technical Details (Col-span 8) -->
+          <div class="lg:col-span-8 border border-zinc-200 bg-white p-10 lg:p-12 space-y-10 shadow-lg relative overflow-hidden card-grid-bg" id="active-study-card">
+            <!-- Dynamic Content Injected here via Javascript -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Specialized Nanoconjugate Research (STUDY-4 & STUDY-5) (Wider Layout) -->
+    <section class="py-28 border-b border-zinc-200 bg-zinc-50/70 relative overflow-hidden">
+      <!-- Engineering grid pattern background -->
+      <div class="absolute inset-0 pointer-events-none animate-hex-grid"></div>
+      
+      <!-- Subtle decoration elements -->
+      <div class="absolute right-0 bottom-0 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 top-20 w-96 h-96 bg-teal-500/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 relative z-10">
+        <div class="mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 bg-emerald-600 rounded-full"></span>
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-emerald-600 uppercase">ONCOLOGY & THERAPEUTICS</span>
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-light tracking-tight text-zinc-900">Drug Delivery Nanoconjugate Programs</h2>
+          <p class="text-base text-zinc-500 font-light max-w-2xl leading-relaxed">
+            Nanoparticle-based encapsulation models engineered for sustained localized payload delivery.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          
+          <!-- Study 4 -->
+          <div class="border border-zinc-200 bg-white p-10 flex flex-col justify-between hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300">
+            <div class="space-y-5">
+              <span class="font-mono text-[10px] font-bold text-emerald-600 uppercase tracking-widest block">PROGRAM ID // STUDY-4</span>
+              <h3 class="text-2xl font-bold text-zinc-900">CQD-Chrysin Drug Delivery</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 font-mono italic leading-relaxed">Nomenclature: Loading Efficiency and Sustained Release of CQD-Chrysin Nanoconjugates</p>
+              
+              <div class="space-y-4 pt-3">
+                <div class="text-sm bg-slate-50 p-4 border-l-2 border-emerald-500">
+                  <span class="font-bold text-zinc-700 block mb-1">Target Pathology & Limitation:</span>
+                  <span class="text-zinc-650 font-light leading-relaxed">Inconsistent localized therapeutic concentrations in oncological target sites due to premature degradation.</span>
+                </div>
+                <div class="text-sm bg-slate-50 p-4 border-l-2 border-zinc-400">
+                  <span class="font-bold text-zinc-700 block mb-1">Technical Approach:</span>
+                  <span class="text-zinc-650 font-light leading-relaxed">Carbon Quantum Dot (CQD) encapsulation with Chrysin, tested in simulated tumor microenvironments at pH 5.0 and 37°C.</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-zinc-100">
+              <h4 class="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4">Validated Program Metrics</h4>
+              <div class="grid grid-cols-3 gap-6">
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">Max Load</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">64.3%</span>
+                </div>
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">Base Ratio</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">46.1%</span>
+                </div>
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">Release</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">36 Hrs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Study 5 -->
+          <div class="border border-zinc-200 bg-white p-10 flex flex-col justify-between hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300">
+            <div class="space-y-5">
+              <span class="font-mono text-[10px] font-bold text-emerald-600 uppercase tracking-widest block">PROGRAM ID // STUDY-5</span>
+              <h3 class="text-2xl font-bold text-zinc-900">GO-Chrysin Drug Delivery</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 font-mono italic leading-relaxed">Nomenclature: Loading Efficiency and Sustained Release of Graphene Oxide-Chrysin Nanoconjugates</p>
+              
+              <div class="space-y-4 pt-3">
+                <div class="text-sm bg-slate-50 p-4 border-l-2 border-emerald-500">
+                  <span class="font-bold text-zinc-700 block mb-1">Target Pathology & Limitation:</span>
+                  <span class="text-zinc-650 font-light leading-relaxed">Unstable colloidal transport and fast physiological dissolution of bioactive cancer-fighting flavonoids.</span>
+                </div>
+                <div class="text-sm bg-slate-50 p-4 border-l-2 border-zinc-400">
+                  <span class="font-bold text-zinc-700 block mb-1">Technical Approach:</span>
+                  <span class="text-zinc-650 font-light leading-relaxed">Hybrid structural bonding verified via XRD crystal lattice shifts, UV-Vis scanning, and FTIR surface conjugation spectra.</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-zinc-100">
+              <h4 class="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4">Validated Program Metrics</h4>
+              <div class="grid grid-cols-3 gap-6">
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">Structure</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">XRD Shift</span>
+                </div>
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">FTIR Scan</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">Match</span>
+                </div>
+                <div class="bg-zinc-50 border border-zinc-150 p-4 rounded-sm space-y-1">
+                  <span class="text-[10px] text-zinc-400 block font-mono leading-none">Colloid</span>
+                  <span class="font-mono text-base font-bold text-zinc-950">Stable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Clinical Case Studies: Story-Driven Narrative (Wider layout) -->
+    <section class="py-28 bg-slate-50/80 border-b border-zinc-200 relative overflow-hidden">
+      <!-- Faint blueprint ledger background -->
+      <div class="absolute inset-0 pointer-events-none animate-clinical-grid"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-200/50 rounded-full filter blur-[130px] pointer-events-none"></div>
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+        <div class="mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 bg-teal-600 rounded-full"></span>
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-teal-600 uppercase">CLINICAL INTEGRITY</span>
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-light tracking-tight text-zinc-900">Implantable Scaffolds & Diagnostic Studies</h2>
+          <p class="text-base text-zinc-500 font-light max-w-2xl leading-relaxed">
+            Narrative journals tracing our breakthroughs in patient-centric tissue fabrication and non-invasive diagnostics.
+          </p>
+        </div>
+
+        <div class="space-y-20">
+          
+          <!-- Case Alpha -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 border-l-4 border-teal-500 bg-white p-10 md:p-16 shadow-md space-y-8">
+            <div class="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm">
+              <span class="text-teal-600 font-bold">CASE STUDY ALPHA</span>
+              <span class="text-zinc-300">/</span>
+              <span class="text-zinc-500">INDICATION: LEFORT II FRACTURE RECONSTRUCTION</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-zinc-950 leading-tight">
+              Bioresorbable Maxillofacial Implants: <span class="font-semibold italic bg-clip-text text-transparent bg-gradient-to-r from-teal-950 to-emerald-950">Moving Beyond Permanent Rigid Metal</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              <div class="lg:col-span-8 text-zinc-650 font-light leading-relaxed text-base md:text-lg lg:text-xl space-y-6">
+                <p>
+                  Every year, millions of people around the world face broken bones, damaged joints, or worn-out skeletal regions that require surgical repair. For a long time, doctors have turned to metal implants to fix these problems. While they have helped countless patients walk, run, and live normally again, they are far from perfect. 
+                </p>
+                <p>
+                  Metal implants are inherently rigid and stiff compared to organic bone, causing continuous internal discomfort, localized bone degeneration, or complications years down the line. They are also expensive to manufacture, especially when each patient's anatomy is unique and demands an exact fit. Worse, many patients—particularly growing children—must endure traumatic secondary surgeries simply to remove or adjust the metal hardware as they heal.
+                </p>
+                <p class="font-semibold text-teal-950">
+                  Celutron's breakthrough bypasses this cycle by printing custom maxillofacial implants directly from patient CT scan DICOM data. Utilizing a smart, plant-based polymer matrix (PLA-HAp), the implant acts as a temporary framework that seamlessly fuses with real bone, guiding natural cellular growth, and then completely vanishes from the human body via bioresorption once its structural job is done.
+                </p>
+              </div>
+              <div class="lg:col-span-4 bg-slate-50 p-8 border border-zinc-200 flex flex-col justify-center relative shadow-sm">
+                <span class="absolute top-3 left-5 text-8xl text-teal-150 font-serif leading-none select-none">“</span>
+                <p class="text-base italic font-serif text-teal-950 relative z-10 leading-relaxed">
+                  Instead of forcing the patient to adapt to a rigid metal piece, these implants support natural healing, feel comfortable, and break down safely over time as real bone regrows in its place.
+                </p>
+                <div class="mt-6 font-mono text-[10px] text-zinc-400 uppercase tracking-widest text-right">
+                  — DR. R&D LEAD, OSTEOLOGY
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-100">
+              <div class="text-[11px] font-mono font-bold text-zinc-400 uppercase mb-4 tracking-widest">Translation Sequence</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 font-mono text-xs text-zinc-650">
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-teal-500"></span>
+                  <span>Day 1: DICOM CT Custom Printing</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-teal-500"></span>
+                  <span>Months 3–6: HAp Bone Ingrowth</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-teal-500"></span>
+                  <span>Months 12–34: Complete PLA Resorption</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Beta -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 border-l-4 border-emerald-500 bg-white p-10 md:p-16 shadow-md space-y-8">
+            <div class="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm">
+              <span class="text-emerald-600 font-bold">CASE STUDY BETA</span>
+              <span class="text-zinc-300">/</span>
+              <span class="text-zinc-500">INDICATION: NON-INVASIVE EARLY ABNORMALITY MAPPING</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-zinc-950 leading-tight">
+              Breast Cancer Screening: <span class="font-semibold italic bg-clip-text text-transparent bg-gradient-to-r from-teal-950 to-emerald-950">Shattering the Cost Barrier for Health Equity</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              <div class="lg:col-span-8 text-zinc-650 font-light leading-relaxed text-base md:text-lg lg:text-xl space-y-6">
+                <p>
+                  Early-stage detection of breast cancer changes lives, yet millions of women lack access to screening. Legacy diagnostic procedures—such as mammography or MRI imaging—remain concentrated in urban centers and carry massive financial barriers, costing up to ₹25,000 per session. For low-income and rural communities, this cost effectively makes early screening a luxury.
+                </p>
+                <p class="font-semibold text-emerald-950">
+                  We developed a lightweight, wearable diagnostic patch sensor that completely bypasses the need for high-voltage machinery, external radiation, or expensive facilities. Powered purely by harvesting the patient's own body heat via advanced micro-thermoelectric generators, the patch maps cellular electrical permittivity changes and streams real-time wireless data to a clinician's dashboard.
+                </p>
+                <p>
+                  By using simple, scalable organic materials, we have shattered the diagnostic price barrier down to a sub-₹500 threshold. This turns early cancer screening from a costly institutional hurdle into an accessible, safe, and routine checkup that can be conducted anywhere.
+                </p>
+              </div>
+              <div class="lg:col-span-4 bg-zinc-50 p-8 border border-zinc-200 flex flex-col justify-center relative shadow-sm">
+                <span class="absolute top-3 left-5 text-8xl text-emerald-105 font-serif leading-none select-none">“</span>
+                <p class="text-base italic font-serif text-emerald-950 relative z-10 leading-relaxed">
+                  Shattering the diagnostic pricing model down to less than ₹500 is not just a technological optimization; it is a fundamental redirection of healthcare accessibility.
+                </p>
+                <div class="mt-6 font-mono text-[10px] text-zinc-400 uppercase tracking-widest text-right">
+                  — MEDICAL DIRECTOR, COIMBATORE DEV CAMP
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-100">
+              <div class="text-[11px] font-mono font-bold text-zinc-400 uppercase mb-4 tracking-widest">Translation Sequence</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 font-mono text-xs text-zinc-650">
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                  <span>Zero-Power Body Heat Harvest</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                  <span>Permittivity Abnormality Map</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                  <span>Sub-₹500 Diagnosis Window</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Gamma -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 border-l-4 border-zinc-900 bg-white p-10 md:p-16 shadow-md space-y-8">
+            <div class="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm">
+              <span class="text-zinc-950 font-bold">CASE STUDY GAMMA</span>
+              <span class="text-zinc-300">/</span>
+              <span class="text-zinc-500">INDICATION: PACLITAXEL & RADIATION MONITORING</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-zinc-950 leading-tight">
+              Oncology Cytogenetic Mapping: <span class="font-semibold italic bg-clip-text text-transparent bg-gradient-to-r from-teal-950 to-emerald-950">Unmasking the Drivers of the Tumor Battlefield</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              <div class="lg:col-span-8 text-zinc-650 font-light leading-relaxed text-base md:text-lg lg:text-xl space-y-6">
+                <p>
+                  Cancer therapies are often a blind struggle. Clinicians administer highly toxic drugs like Paclitaxel or high-dose radiation therapies, waiting weeks for radiological scans to check if the tumor is shrinking or spreading. During this delay, aggressive tumors can mutate and bypass treatments entirely.
+                </p>
+                <p class="font-semibold text-zinc-900">
+                  Our research team conducted a cytogenetic investigation to map the genetic locks that regulate aggressive tumor behavior. We succeeded in identifying and mapping a shared chromosomal breakpoint lock at Locus 6q23, which unmasks the dual oncological drivers: MYB (a primary breast adenoid cystic carcinoma driver) and BCLAF1 (its fusion partner). 
+                </p>
+                <p>
+                  By mapping this exact coordinate, alongside the neighboring GRM1 target at 6q24, we provide oncologists with a precision genetic blueprint. This makes it possible to track real-time chromosomal stability and tumor response during active, aggressive therapies, allowing for immediate treatment modifications.
+                </p>
+              </div>
+              <div class="lg:col-span-4 bg-zinc-50 p-8 border border-zinc-200 flex flex-col justify-center relative shadow-sm">
+                <span class="absolute top-3 left-5 text-8xl text-zinc-150 font-serif leading-none select-none">“</span>
+                <p class="text-base italic font-serif text-zinc-950 relative z-10 leading-relaxed">
+                  We have unmasked the precise chromosomal target loci, mapping the coordinate drivers MYB + BCLAF1 and GRM1 to give clinicians a clear genetic blueprint of the battlefield.
+                </p>
+                <div class="mt-6 font-mono text-[10px] text-zinc-400 uppercase tracking-widest text-right">
+                  — LEAD CYTOGENETICIST, CHENNAI LABS
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-100">
+              <div class="text-[11px] font-mono font-bold text-zinc-400 uppercase mb-4 tracking-widest">Translation Sequence</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 font-mono text-xs text-zinc-655">
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-zinc-950"></span>
+                  <span>Locus Lock: Chromosome 6q23</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-zinc-950"></span>
+                  <span>Drivers Identified: MYB + BCLAF1</span>
+                </div>
+                <div class="flex items-center gap-3 bg-zinc-50 p-4 border border-zinc-250">
+                  <span class="h-2.5 w-2.5 rounded-full bg-zinc-950"></span>
+                  <span>Adjacent Target Locus: GRM1 (6q24)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Clinical & Community Timeline (Wider Layout) -->
+    <section class="py-28 bg-white border-b border-zinc-200 overflow-hidden relative">
+      <!-- Subtle grid elements -->
+      <div class="absolute inset-0 pointer-events-none animate-blueprint-grid"></div>
+      
+      <!-- Subtle glow running down the timeline center -->
+      <div class="absolute top-0 bottom-0 left-4 md:left-1/2 -translate-x-1/2 w-64 bg-gradient-to-b from-teal-500/5 via-emerald-500/5 to-transparent filter blur-3xl pointer-events-none"></div>
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+        <!-- Header -->
+        <div class="mb-24 text-center space-y-4 max-w-3xl mx-auto">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 bg-teal-600 rounded-full"></span>
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-teal-600 uppercase">PROGRESS TRACKING</span>
+          </div>
+          <h2 class="text-4xl font-light tracking-tight text-zinc-900 sm:text-5xl">R&D Milestones & Community Impact</h2>
+          <p class="text-base text-zinc-500 font-light leading-relaxed">
+            A unified roadmap tracking our corporate laboratory engineering accomplishments alongside community health and training initiatives.
+          </p>
+        </div>
+
+        <!-- Central Timeline Container -->
+        <div id="timeline-container" class="relative max-w-6xl mx-auto">
+          <!-- Backing structural timeline line -->
+          <div class="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] bg-zinc-200 -translate-x-1/2"></div>
+          
+          <!-- Scroll progress filling gradient line -->
+          <div id="timeline-progress" class="absolute left-4 md:left-1/2 top-4 w-[3px] bg-gradient-to-b from-teal-500 to-emerald-500 origin-top -translate-x-1/2 transition-all duration-100 ease-out h-0"></div>
+
+          <!-- Event 1: 2023 Q1 (Corporate) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="md:text-right md:pr-14 md:pl-0 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2023 Q1 // COMPLETED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Company Founded</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                Celutron Innovations established in Chennai, incubated at Crescent Innovation and Incubation Council (CIIC).
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 2: 2023 Q3 (Corporate) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2023 Q3 // COMPLETED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">DST Grant Awarded</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                Department of Science & Technology research grant through VIT-TBI.
+              </p>
+            </div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 3: 2024 Q1 (Corporate) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="md:text-right md:pr-14 md:pl-0 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2024 Q1 // COMPLETED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Bioprinter RX-1 Prototype</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                First reconfigurable bioprinter prototype with modular printhead system.
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 4: 2024 Q3 (Corporate) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2024 Q3 // COMPLETED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Biomembrane B-10 Development</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                Multi-layered keratinocyte/fibroblast biomembrane fabrication protocol established.
+              </p>
+            </div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 5: [Community Milestone] 3D Bioprinting Industrial Hands-On Workshop (Recap) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="md:text-right md:pr-14 md:pl-0 pl-12 space-y-3">
+              <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-emerald-800">
+                ★ COMMUNITY RECAP
+              </div>
+              <h4 class="text-2xl font-bold text-zinc-950">Where Curiosity Turned Into Creation</h4>
+              <p class="text-xs sm:text-sm font-mono text-zinc-400">3D Bioprinting Industrial Hands-On Workshop</p>
+              <p class="text-sm sm:text-base text-zinc-650 font-light leading-relaxed bg-zinc-50 md:text-right text-left p-6 border border-zinc-200 shadow-inner rounded-sm">
+                What happens when science, technology, and hands-on curiosity come together in one room? That question came to life at our recently concluded workshop. Students, researchers, healthcare professionals, and biotech enthusiasts stepped into a fully hands-on experience with industrial-grade bioprinting equipment, preparing bioinks and turning digital designs into real, physical scaffolds. Guided by our team of experts, participants learned processes, prepared materials, and gained new perspectives on how their work could contribute to real-world tissue repair.
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-emerald-500 bg-white shadow-sm"></div>
+          </div>
+
+          <!-- Event 6: 2025 Q1 (Corporate) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2025 Q1 // COMPLETED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Pre-clinical Validations</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                Initial biocompatibility and cell viability testing under GLP conditions.
+              </p>
+            </div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 7: [Community Milestone] HPV Vaccination Awareness Drive (Recap) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14 pl-12 space-y-3">
+              <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-emerald-800">
+                ★ COMMUNITY RECAP
+              </div>
+              <h4 class="text-2xl font-bold text-zinc-950">Turning Awareness Into Action</h4>
+              <p class="text-xs sm:text-sm font-mono text-zinc-400">HPV Vaccination Awareness Drive</p>
+              <p class="text-sm sm:text-base text-zinc-650 font-light leading-relaxed bg-zinc-50 p-6 border border-zinc-200 shadow-inner rounded-sm">
+                Every meaningful change starts with a conversation. This initiative brought together healthcare professionals, families, and young adults to break down vaccine myths, reduce hesitations, and build a safe space for proactive healthcare choices. Guided by medical voices, participants learned about early vaccination benefits and took active steps to protect long-term family health.
+              </p>
+            </div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-emerald-500 bg-white shadow-sm"></div>
+          </div>
+
+          <!-- Event 8: 2025 Q3 (Ongoing) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <div class="md:text-right md:pr-14 md:pl-0 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2025 Q3 // ONGOING
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Bone Scaffold BS-4</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                Hydroxyapatite scaffold development with controlled porosity (50-90%).
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white"></div>
+          </div>
+
+          <!-- Event 9: 2026 (Planned) -->
+          <div class="scroll-anim-item transition-all duration-700 ease-out transform translate-y-4 opacity-0 relative grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14 pl-12">
+              <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1 rounded-sm font-mono text-xs font-bold text-teal-700">
+                2026 // PLANNED
+              </div>
+              <h4 class="text-xl font-bold text-zinc-950 mt-3">Clinical Pathway Entry</h4>
+              <p class="text-sm sm:text-base text-zinc-500 mt-2 font-light leading-relaxed">
+                CDSCO regulatory submission and expanded pre-clinical trial program.
+              </p>
+            </div>
+            <!-- Timeline node -->
+            <div class="absolute left-4 md:left-1/2 top-2.5 h-4.5 w-4.5 -translate-x-1/2 rounded-full border-2 border-teal-500 bg-white animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Validation Dashboard Table (Wider Layout) -->
+    <section class="py-28 bg-slate-50 relative overflow-hidden border-b border-zinc-200">
+      <!-- Technical grid line texture -->
+      <div class="absolute inset-0 pointer-events-none animate-clinical-grid"></div>
+      
+      <!-- Subtle decoration elements -->
+      <div class="absolute left-1/4 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full filter blur-[120px] pointer-events-none"></div>
+      <div class="absolute right-1/4 top-1/3 w-[500px] h-[500px] bg-emerald-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 relative z-10">
+        <div class="mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 bg-teal-600 rounded-full"></span>
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-teal-600 uppercase">VERIFICATION</span>
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-light tracking-tight text-zinc-900">Metric Integrity Dashboard</h2>
+          <p class="text-base text-zinc-500 font-light max-w-2xl leading-relaxed">
+            Independent laboratory test results and validation assays verifying scaffold performance parameters.
+          </p>
+        </div>
+
+        <div class="border border-zinc-200 bg-white overflow-hidden shadow-md">
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-zinc-200">
+              <thead class="bg-zinc-50 select-none">
+                <tr>
+                  <th scope="col" class="px-8 py-5 text-left font-mono text-sm font-semibold tracking-wider text-zinc-400 uppercase">Validated Parameter</th>
+                  <th scope="col" class="px-8 py-5 text-left font-mono text-sm font-semibold tracking-wider text-zinc-400 uppercase">System Metric Value</th>
+                  <th scope="col" class="px-8 py-5 text-left font-mono text-sm font-semibold tracking-wider text-zinc-400 uppercase">Assay Validation Method</th>
+                  <th scope="col" class="px-8 py-5 text-right font-mono text-sm font-semibold tracking-wider text-zinc-400 uppercase">Clinical Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-200 bg-white text-base" id="validation-dashboard-body">
+                <!-- Injected via Javascript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Collaborate CTA (Expanded) -->
+    <section class="bg-zinc-950 text-white py-28 relative overflow-hidden">
+      <!-- subtle grid element -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <svg class="h-full w-full stroke-white">
+          <defs>
+            <pattern id="cta-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M.5 40V.5H40" fill="none" stroke-width="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#cta-grid)" />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 text-center space-y-10 relative z-10">
+        <div class="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-4 py-1.5 text-xs sm:text-sm font-mono text-teal-400">
+          JOINT SCIENTIFIC VENTURES
+        </div>
+        <h2 class="text-4xl font-light tracking-tight sm:text-6xl max-w-4xl mx-auto leading-tight">
+          Working on <span class="font-extrabold text-teal-400 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">something similar?</span>
+        </h2>
+        <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
+          We welcome collaborative opportunities, joint university publications, clinical trial partnerships, and institutional research inquiries.
+        </p>
+        <div class="pt-6 flex flex-col sm:flex-row justify-center items-center gap-5">
+          <a href="/contact?type=collaboration" class="inline-flex w-full sm:w-auto items-center justify-center border border-teal-500 bg-teal-500 px-8 py-4 text-base font-semibold text-zinc-950 hover:bg-transparent hover:text-white transition-all duration-200">
+            Initiate Research Proposal
+            <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
+          </a>
+          <a href="/contact" class="inline-flex w-full sm:w-auto items-center justify-center border border-zinc-700 bg-transparent px-8 py-4 text-base font-semibold text-zinc-300 hover:border-zinc-500 hover:text-white transition-all duration-200">
+            Inquire Bio-materials Access
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mock Footer -->
+  <footer class="border-t border-zinc-200 bg-white py-12">
+    <div class="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="font-mono text-xs text-zinc-400">© 2026 Celutron Innovations. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6 font-mono text-[10px] text-zinc-400 uppercase">
+        <a href="#" class="hover:text-zinc-600">Privacy Policy</a>
+        <a href="#" class="hover:text-zinc-600">Terms of Service</a>
+        <a href="#" class="hover:text-zinc-600">CDSCO Regulatory Certifications</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla Javascript logic -->
+  <script>
+    // 1. Data Definitions
+    const researchAreas = [
+      { id: "area-1", name: "Tissue Engineering", code: "TE-09", description: "Design and fabrication of functional 3D constructs to restore, maintain, or improve damaged skeletal tissues.", studyId: "study-3" },
+      { id: "area-2", name: "Stem Cell Systems", code: "SC-04", description: "Harnessing pluripotency, bio-active signaling, and cellular cargo pathways to drive localized tissue renewal.", studyId: "study-2" },
+      { id: "area-3", name: "Regenerative Medicine", code: "RM-11", description: "Translating cellular therapies and advanced biological membranes from lab bench to in-vivo wound recovery.", studyId: "study-2" },
+      { id: "area-4", name: "Scaffold Development", code: "SD-02", description: "Engineering porous, tridimensional, biocompatible structural lattices that mimic native extracellular matrices.", studyId: "study-3" },
+      { id: "area-5", name: "Bioprinting Methodologies", code: "BM-07", description: "Developing extrusion, fluid-flow, and layer-by-layer deposition systems for cell-laden hydrogels.", studyId: "study-6" },
+      { id: "area-6", name: "Material Science", code: "MS-05", description: "Synthesizing non-toxic, bioresorbable, shear-thinning polymers and nanoparticles from sustainable resources.", studyId: "study-1" }
+    ];
+
+    const studiesData = {
+      "study-1": {
+        id: "STUDY-1",
+        title: "SCB-Nanocellulose Bioprinting Matrix",
+        fullname: "Rapid Isolation of Cellulose Nanofibrils (CNF) from Sugarcane Bagasse for 3D Bioprinting and Tissue Engineering Applications",
+        problem: "Existing CNF isolation models use harsh chemicals, require slow steps, and fail to utilize India's 100M+ tonnes of annual sugarcane bagasse waste.",
+        approach: "AHP and DES chemical isolation, characterized via FTIR, SEM, NTA (Nanoparticle Tracking Analysis).",
+        narrative: "Every year, sugarcane farming produces huge amounts of leftover plant waste that is often burned or discarded, creating environmental problems instead of being put to good use. This project explores a surprising and sustainable solution — transforming that agricultural waste into a valuable material for healing the human body. By carefully processing the fibrous leftovers from sugarcane, tiny natural fibers can be extracted quickly and efficiently, without relying on harsh chemicals or slow, expensive methods. These fibers, though incredibly small, are strong, body-friendly, and ideal for building soft, supportive structures that can be used in advanced medical printing. Once processed, this plant-based material can be shaped using modern printing technology to create scaffolds that support the growth of new tissue, helping the body repair damaged areas more naturally. What makes this approach especially meaningful is its dual impact — reducing agricultural waste while creating an affordable, eco-friendly resource for medical innovation. This research aims to turn a simple farming byproduct into a powerful tool for future healthcare, offering a sustainable, low-cost pathway toward better tissue repair and regenerative treatments, all while supporting a cleaner and greener environment.",
+        metrics: [
+          { label: "DES Peak Particle Size", value: "155.8 nm", percentage: 31 },
+          { label: "DES Zeta Potential", value: "-20.6 mV", percentage: 77 },
+          { label: "AHP Peak Particle Size", value: "168.3 nm", percentage: 28 },
+          { label: "AHP Zeta Potential", value: "-10.8 mV", percentage: 66 }
+        ]
+      },
+      "study-2": {
+        id: "STUDY-2",
+        title: "Exosome Wound Healing Matrix Membrane",
+        fullname: "Development of Exosome-Loaded Bio-Printed PRF Membrane for Wound Healing Matrix",
+        problem: "Chronic diabetic wounds show delayed healing due to damaged angiogenesis, sustained inflammation, and inadequate localized cellular signaling.",
+        approach: "NTA-confirmed exosome isolation coupled with i-PRF inside a Sodium Alginate + Gelatin bio-carrier. Printed in 5 crosslinked layers, validated via cell viability MTT assay.",
+        narrative: "Wounds that don't heal properly can be painful, slow, and frustrating for patients — whether they come from surgery, injury, or long-term health conditions like diabetes. Standard bandages and dressings often just cover a wound, without actively helping the body heal faster or more completely. This project explores a smarter approach: creating a specially designed healing membrane using the body's own natural healing signals. By combining a patient's own blood-derived healing factors with tiny natural messengers (exosomes) that cells use to communicate and repair themselves, this membrane is designed to actively support and speed up the healing process — rather than simply sitting on top of a wound. Using advanced printing techniques, this healing matrix can be shaped and layered with precision, allowing it to fit different types of wounds and deliver its healing power exactly where it's needed most. Because the materials come from natural, body-friendly sources, the goal is to reduce complications, minimize scarring, and help wounds close more quickly and safely. This research aims to move wound care beyond simple protection, toward active, personalized healing — giving patients faster recovery, less pain, and a better quality of life during the healing journey.",
+        metrics: [
+          { label: "Scaffold Architecture", value: "5 Crosslinked Layers", percentage: 100 },
+          { label: "Cell Carrier Medium", value: "Sodium Alginate + Gelatin", percentage: 90 },
+          { label: "Viability Assay Type", value: "MTT Colorimetric Assay", percentage: 85 },
+          { label: "Release Kinetics", value: "Sustained Signaling", percentage: 95 }
+        ]
+      },
+      "study-3": {
+        id: "STUDY-3",
+        title: "Bone Scaffold (Tri-Component)",
+        fullname: "Pluronic-Assisted Alginate-Hydroxyapatite Bioink for 3D Bioprinting of Bone Tissue Scaffolds",
+        problem: "Mono-component alginate bioinks show poor extrusion stability, poor filament definition, and insufficient mechanical load-bearing capacity for orthopedic defects.",
+        approach: "A tri-component ink combining Alginate, nano-Hydroxyapatite (nano-HAp), and Pluronic F-127 carrier, extruded through a 22G nozzle under 65–90 kPa. Extrusion and printability characterized via MG-63 cell trials.",
+        narrative: "Bones have an incredible natural ability to heal themselves, but when damage is too severe — from major injuries, illness, or bone loss due to age — the body sometimes needs extra help to rebuild what's missing. This project explores an innovative way to give that help: using a specially designed printable material, almost like a biological ink, to build tiny scaffolds that guide bone to grow back naturally. Made from a thoughtful blend of bone-friendly and body-safe ingredients, this bioink is engineered to be soft and flexible enough to print with precision, while still providing the right support and structure for new bone cells to take hold and thrive. Using advanced 3D printing techniques, these scaffolds can be shaped to match a patient's exact needs, offering a personalized foundation for healing rather than a one-size-fits-all solution. Over time, as the body's own bone tissue grows into the scaffold, the printed structure works alongside nature, encouraging real, lasting repair instead of relying on permanent artificial parts. This research aims to bring us closer to a future where bone injuries and defects can be treated with solutions that are safer, more personalized, and more in tune with the body's own healing process — turning cutting-edge printing technology into real, meaningful care for patients.",
+        metrics: [
+          { label: "Formulation Printability", value: "F6 Grade (5/5)", percentage: 100 },
+          { label: "Filament Core Width", value: "398 ± 18 µm", percentage: 80 },
+          { label: "Volumetric Porosity", value: "72.3% (macroporous)", percentage: 72.3 },
+          { label: "Compressive Load Strength", value: "28x Improvement", percentage: 98 }
+        ]
+      },
+      "study-6": {
+        id: "STUDY-6",
+        title: "Advanced Organ Printing",
+        fullname: "Synovial Lifting Scaffold Delivery System & Kidney Tissue Biofabrication Project",
+        problem: "Thick bioprinted tissue constructs suffer from internal cell starvation due to massive diffusion blocks. Nutrients and electrolytes fail to reach deep cellular zones.",
+        approach: "Comparative electrolyte and protein diffusion validation assays across active semi-permeable biological barrier membranes to calculate transport coefficient parameters.",
+        narrative: "For millions of people living with kidney failure, life often revolves around long hours connected to dialysis machines, strict dietary restrictions, and the anxious wait for a donor organ that may never come. Even when a transplant is possible, the body can reject a donor kidney, and a lifetime of medication is often needed just to keep it working. This project explores a bold alternative to that struggle — the development of a bionic kidney, a smart, engineered device designed to take over the vital job of filtering blood, removing waste, and balancing fluids, just like a healthy natural kidney would. Unlike traditional dialysis, which only offers temporary relief a few times a week, this technology aims to work continuously, giving patients more freedom, better health, and a life that isn't dictated by hospital visits. By combining biological components with smart engineering, the bionic kidney is designed to work in harmony with the body, reducing the risk of rejection while restoring the everyday independence that kidney patients often lose. This research aims to offer a life-changing solution for people with kidney disease — moving beyond machines that simply manage symptoms, toward a real, lasting alternative that lets patients live fuller, healthier, and more hopeful lives.",
+        metrics: [
+          { label: "Printing Modalities", value: "Synovial & Kidney", percentage: 95 },
+          { label: "Validation Assays", value: "Electrolyte & Protein", percentage: 90 },
+          { label: "Diffusion Efficiency", value: "Semi-permeable Flux", percentage: 78 },
+          { label: "Barrier Retention", value: "Albumin exclusion", percentage: 89 }
+        ]
+      }
+    };
+
+    const validationDashboard = [
+      { metric: "Post-print cell viability", value: ">85%", method: "SEM + MTT assay" },
+      { metric: "Bone scaffold porosity", value: "72.3%", method: "Mechanical characterization" },
+      { metric: "Scaffold interconnectivity", value: ">95%", method: "Micro-CT Scan" },
+      { metric: "Compressive strength improvement", value: "28×", method: "Instron Mechanical Testing" },
+      { metric: "Drug loading efficiency (max)", value: "64.3%", method: "NTA characterization" },
+      { metric: "Sustained release window", value: "36 hours", method: "In-vitro UV-Vis Spectrometry" },
+      { metric: "CNF particle size (DES)", value: "155.8 nm", method: "Nanoparticle Tracking Analysis (NTA)" }
+    ];
+
+    // SVG templates mapping
+    const svgTemplates = {
+      "STUDY-1": `
+        <svg viewBox="0 0 400 300" class="w-full h-full max-h-[380px] select-none">
+          <path d="M 0,50 L 400,50 M 0,100 L 400,100 M 0,150 L 400,150 M 0,200 L 400,200 M 0,250 L 400,250 M 50,0 L 50,300 M 100,0 L 100,300 M 150,0 L 150,300 M 200,0 L 200,300 M 250,0 L 250,300 M 300,0 L 300,300 M 350,0 L 350,300" fill="none" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4,4" />
+          <line x1="200" y1="20" x2="200" y2="280" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,2" />
+          <path d="M 30,80 Q 80,100 120,60 T 200,100" fill="none" stroke="#64748b" stroke-width="1.2" />
+          <path d="M 30,140 Q 90,110 140,160 T 200,140" fill="none" stroke="#64748b" stroke-width="1.2" />
+          <path d="M 30,220 Q 70,180 130,230 T 200,220" fill="none" stroke="#64748b" stroke-width="1.2" />
+          <path d="M 200,100 C 240,100 280,100 370,100" fill="none" stroke="#0d9488" stroke-width="1.5" class="animate-draw" />
+          <path d="M 200,140 C 240,140 280,140 370,140" fill="none" stroke="#0d9488" stroke-width="1.5" class="animate-draw" />
+          <path d="M 200,220 C 240,220 280,220 370,220" fill="none" stroke="#0d9488" stroke-width="1.5" class="animate-draw" />
+          <circle cx="200" cy="100" r="5" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+          <circle cx="200" cy="140" r="5" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+          <circle cx="200" cy="220" r="5" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+          <text x="210" y="85" font-family="monospace" font-size="8" fill="#0d9488" font-weight="bold">DES SOLVENT BARRIER</text>
+          <text x="40" y="60" font-family="monospace" font-size="8" fill="#64748b">UNREFINED BAGASSE MATRIX</text>
+          <text x="280" y="240" font-family="monospace" font-size="8" fill="#0d9488">ISOLATED CNF (155.8nm)</text>
+        </svg>
+      `,
+      "STUDY-2": `
+        <svg viewBox="0 0 400 300" class="w-full h-full max-h-[380px] select-none">
+          <polygon points="200,260 290,225 200,190 110,225" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          <line x1="155" y1="207" x2="245" y2="242" stroke="#e2e8f0" stroke-width="0.5" />
+          <line x1="245" y1="207" x2="155" y2="242" stroke="#e2e8f0" stroke-width="0.5" />
+          
+          <polygon points="200,200 290,165 200,130 110,165" fill="none" stroke="#cbd5e1" stroke-width="1" />
+          <line x1="155" y1="147" x2="245" y2="182" stroke="#cbd5e1" stroke-width="0.5" />
+          <line x1="245" y1="147" x2="155" y2="182" stroke="#cbd5e1" stroke-width="0.5" />
+          
+          <polygon points="200,140 290,105 200,70 110,105" fill="none" stroke="#94a3b8" stroke-width="1" />
+          <line x1="155" y1="87" x2="245" y2="122" stroke="#94a3b8" stroke-width="0.5" />
+          <line x1="245" y1="87" x2="155" y2="122" stroke="#94a3b8" stroke-width="0.5" />
+
+          <line x1="110" y1="225" x2="110" y2="105" stroke="#64748b" stroke-width="0.8" stroke-dasharray="3,3" />
+          <line x1="290" y1="225" x2="290" y2="105" stroke="#64748b" stroke-width="0.8" stroke-dasharray="3,3" />
+          <line x1="200" y1="260" x2="200" y2="140" stroke="#64748b" stroke-width="0.8" stroke-dasharray="3,3" />
+          <line x1="200" y1="190" x2="200" y2="70" stroke="#64748b" stroke-width="0.8" stroke-dasharray="3,3" />
+
+          <path d="M 200,160 Q 230,130 170,110" fill="none" stroke="#059669" stroke-width="1.5" stroke-dasharray="3,2" />
+          <path d="M 160,210 Q 130,180 180,150" fill="none" stroke="#059669" stroke-width="1.5" stroke-dasharray="3,2" />
+          <text x="300" y="105" font-family="monospace" font-size="8" fill="#64748b">L1: GEL-ALGINATE SHIELD</text>
+          <text x="300" y="165" font-family="monospace" font-size="8" fill="#64748b">L3: EXOSOME/PRF MATRIX</text>
+          <text x="300" y="225" font-family="monospace" font-size="8" fill="#64748b">L5: BASE ADHESION BLOCK</text>
+          <text x="120" y="60" font-family="monospace" font-size="8" fill="#059669" font-weight="bold">CELLULAR MATRIX ARROWS</text>
+        </svg>
+      `,
+      "STUDY-3": `
+        <svg viewBox="0 0 400 300" class="w-full h-full max-h-[380px] select-none">
+          <line x1="200" y1="150" x2="200" y2="40" stroke="#94a3b8" stroke-width="0.5" stroke-dasharray="2,2" />
+          <line x1="200" y1="150" x2="310" y2="210" stroke="#94a3b8" stroke-width="0.5" stroke-dasharray="2,2" />
+          <line x1="200" y1="150" x2="90" y2="210" stroke="#94a3b8" stroke-width="0.5" stroke-dasharray="2,2" />
+          
+          <polygon points="200,250 280,210 200,170 120,210" fill="none" stroke="#64748b" stroke-width="1" />
+          <polygon points="200,130 280,90 200,50 120,90" fill="none" stroke="#64748b" stroke-width="1.2" />
+          <line x1="120" y1="210" x2="120" y2="90" stroke="#64748b" stroke-width="1" />
+          <line x1="280" y1="210" x2="280" y2="90" stroke="#64748b" stroke-width="1" />
+          <line x1="200" y1="250" x2="200" y2="130" stroke="#64748b" stroke-width="1.2" />
+
+          <g stroke="#0d9488" fill="none" stroke-width="0.75">
+            <ellipse cx="200" cy="90" rx="20" ry="10" />
+            <ellipse cx="160" cy="70" rx="15" ry="7.5" />
+            <ellipse cx="240" cy="70" rx="15" ry="7.5" />
+            <ellipse cx="160" cy="150" rx="18" ry="12" transform="rotate(-25 160 150)" />
+            <ellipse cx="160" cy="200" rx="18" ry="12" transform="rotate(-25 160 200)" />
+            <ellipse cx="240" cy="150" rx="18" ry="12" transform="rotate(25 240 150)" />
+            <ellipse cx="240" cy="200" rx="18" ry="12" transform="rotate(25 240 200)" />
+          </g>
+          <line x1="295" y1="90" x2="295" y2="210" stroke="#0d9488" stroke-width="0.8" />
+          <text x="305" y="155" font-family="monospace" font-size="8" fill="#0d9488">22G EXT. CUBE</text>
+          <text x="75" y="110" font-family="monospace" font-size="8" fill="#0d9488" font-weight="bold">72.3% INTERNAL LATTICE</text>
+        </svg>
+      `,
+      "STUDY-6": `
+        <svg viewBox="0 0 400 300" class="w-full h-full max-h-[380px] select-none">
+          <path d="M 0,50 L 400,50 M 0,100 L 400,100 M 0,150 L 400,150 M 0,200 L 400,200 M 0,250 L 400,250 M 50,0 L 50,300 M 100,0 L 100,300 M 150,0 L 150,300 M 200,0 L 200,300 M 250,0 L 250,300 M 300,0 L 300,300 M 350,0 L 350,300" fill="none" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4,4" />
+          <rect x="195" y="20" width="10" height="60" fill="#f1f5f9" stroke="#64748b" stroke-width="1" />
+          <rect x="195" y="110" width="10" height="80" fill="#f1f5f9" stroke="#64748b" stroke-width="1" />
+          <rect x="195" y="220" width="10" height="60" fill="#f1f5f9" stroke="#64748b" stroke-width="1" />
+
+          <circle cx="60" cy="50" r="3" fill="#0d9488" />
+          <circle cx="80" cy="80" r="3" fill="#0d9488" />
+          <circle cx="50" cy="120" r="3" fill="#0d9488" />
+          <circle cx="110" cy="150" r="3" fill="#0d9488" />
+          <circle cx="70" cy="180" r="3" fill="#0d9488" />
+          <circle cx="90" cy="220" r="3" fill="#0d9488" />
+          <circle cx="60" cy="260" r="3" fill="#0d9488" />
+          
+          <circle cx="270" cy="100" r="3" fill="#0d9488" />
+          <circle cx="330" cy="150" r="3" fill="#0d9488" />
+          <circle cx="280" cy="230" r="3" fill="#0d9488" />
+
+          <polygon points="120,60 130,50 140,60 135,75 125,75" fill="#94a3b8" stroke="#475569" stroke-width="0.8" />
+          <polygon points="80,130 90,120 100,130 95,145 85,145" fill="#94a3b8" stroke="#475569" stroke-width="0.8" />
+          
+          <path d="M 140,90 Q 180,95 200,95 T 250,95" fill="none" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="3,2" />
+          <path d="M 150,210 Q 185,205 200,205 T 250,205" fill="none" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="3,2" />
+
+          <rect x="250" y="20" width="130" height="35" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" />
+          <text x="260" y="40" font-family="monospace" font-size="9" fill="#0f172a" font-weight="bold">J = -D * (dC/dx)</text>
+          <text x="25" y="30" font-family="monospace" font-size="8" fill="#64748b">C1: HIGH CONCENTRATION</text>
+          <text x="250" y="275" font-family="monospace" font-size="8" fill="#64748b">C2: LOW CONCENTRATION</text>
+          <text x="260" y="70" font-family="monospace" font-size="8" fill="#0d9488" font-weight="bold">MEMBRANE DIFFUSION VECTOR</text>
+        </svg>
+      `
+    };
+
+    // 2. DOM Elements Rendering
+    const areasListContainer = document.getElementById("research-areas-list");
+    const activeCardContainer = document.getElementById("active-study-card");
+
+    function renderResearchAreas() {
+      areasListContainer.innerHTML = researchAreas.map((area, idx) => `
+        <div
+          data-id="${area.id}"
+          class="research-area-tab group relative cursor-pointer border p-7 transition-all duration-300 bg-white border-zinc-200 hover:border-zinc-400 hover:shadow-sm"
+        >
+          <div class="vertical-strip absolute left-0 top-0 bottom-0 w-1.5 bg-transparent transition-all duration-300"></div>
+          <div class="flex items-center justify-between gap-4">
+            <div class="space-y-2">
+              <span class="font-mono text-[10px] font-bold text-teal-600 block tracking-widest uppercase">CORE AREA // ${area.code}</span>
+              <h3 class="text-xl font-bold transition-colors duration-200 text-zinc-800 area-name-text">${area.name}</h3>
+              <p class="text-xs sm:text-sm text-zinc-500 font-light leading-relaxed">${area.description}</p>
+            </div>
+            <i data-lucide="chevron-right" class="h-5 w-5 text-zinc-400 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1"></i>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateActiveStudyCard(studyId) {
+      const study = studiesData[studyId];
+      const svgCode = svgTemplates[study.id] || "";
+      
+      activeCardContainer.innerHTML = `
+        <!-- Spec tag -->
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 pb-5">
+          <span class="font-mono text-xs font-bold text-teal-600 tracking-wider bg-teal-50 border border-teal-200/50 px-3 py-1 uppercase">
+            ACTIVE SPECIFICATION // ${study.id}
+          </span>
+          <span class="font-mono text-xs font-bold text-zinc-400">STATUS: CELL-VALIDATED</span>
+        </div>
+        
+        <!-- Titles -->
+        <div class="space-y-5">
+          <h3 class="text-3xl lg:text-4xl font-bold text-zinc-950 tracking-tight">${study.title}</h3>
+          <p class="text-sm text-zinc-600 font-mono italic leading-relaxed bg-zinc-50 p-4 border border-zinc-200/50">
+            Nomenclature: ${study.fullname}
+          </p>
+        </div>
+
+        <!-- Custom CAD Schematic (Expanded to 420px height) -->
+        <div class="border border-zinc-200 bg-slate-50/50 p-6 rounded-sm flex items-center justify-center relative overflow-hidden h-[420px] shadow-inner">
+          <div class="absolute top-3 left-3 text-[10px] font-mono text-zinc-400 uppercase tracking-widest">
+            Fig. ${study.id === "STUDY-1" ? "1.1 CNF FILTRATION" : study.id === "STUDY-2" ? "2.3 PRF STACKING" : study.id === "STUDY-3" ? "3.2 POROUS LATTICE" : "6.4 MEMBRANE FLUX"}
+          </div>
+          <div class="absolute bottom-3 left-3 text-[9px] font-mono text-zinc-400">
+            <div>Z_Axis: +10µm</div>
+            <div>X_Grid: 40px</div>
+          </div>
+          ${svgCode}
+        </div>
+
+        <!-- Narrative -->
+        <div class="space-y-4">
+          <h4 class="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider">Scientific Narrative & Purpose</h4>
+          <p class="text-base text-zinc-700 font-light leading-relaxed">${study.narrative}</p>
+        </div>
+
+        <!-- Approach & Limitation Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-zinc-100 pt-8">
+          <div class="space-y-1">
+            <h5 class="font-semibold text-sm text-zinc-900 flex items-center gap-2">
+              <i data-lucide="info" class="h-4 w-4 text-teal-600"></i>
+              Research Limitation
+            </h5>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">${study.problem}</p>
+          </div>
+          <div class="space-y-1">
+            <h5 class="font-semibold text-sm text-zinc-900 flex items-center gap-2">
+              <i data-lucide="cpu" class="h-4 w-4 text-teal-600"></i>
+              Engineering Approach
+            </h5>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">${study.approach}</p>
+          </div>
+        </div>
+
+        <!-- Metrics bars -->
+        <div class="border-t border-zinc-100 pt-8">
+          <h4 class="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider mb-5">Validated Analytical Metrics</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            ${study.metrics.map(metric => `
+              <div class="bg-zinc-50 border border-zinc-200/50 p-5 space-y-3 rounded-sm shadow-sm">
+                <span class="text-[11px] font-mono text-zinc-400 uppercase block">${metric.label}</span>
+                <div class="flex items-baseline justify-between">
+                  <span class="text-2xl font-mono font-bold text-zinc-950">${metric.value}</span>
+                  <span class="text-[11px] font-mono text-teal-600 font-semibold">METRIC VALIDATED</span>
+                </div>
+                <div class="h-1.5 w-full bg-zinc-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-teal-500 transition-all duration-1000 ease-out" style="width: ${metric.percentage}%"></div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+      // Re-create icons
+      lucide.createIcons();
+    }
+
+    // Set interactive hover state
+    function initInteractiveGrid() {
+      const tabs = document.querySelectorAll(".research-area-tab");
+      
+      tabs.forEach(tab => {
+        const studyId = researchAreas.find(a => a.id === tab.dataset.id).studyId;
+
+        const activateTab = () => {
+          tabs.forEach(t => {
+            t.classList.remove("border-teal-500", "shadow-md", "translate-x-1");
+            t.classList.add("border-zinc-200");
+            t.querySelector(".vertical-strip").classList.remove("bg-teal-500");
+            t.querySelector(".vertical-strip").classList.add("bg-transparent");
+            t.querySelector(".area-name-text").classList.remove("text-zinc-950");
+            t.querySelector(".area-name-text").classList.add("text-zinc-800");
+          });
+          tab.classList.add("border-teal-500", "shadow-md", "translate-x-1");
+          tab.classList.remove("border-zinc-200");
+          tab.querySelector(".vertical-strip").classList.add("bg-teal-500");
+          tab.querySelector(".vertical-strip").classList.remove("bg-transparent");
+          tab.querySelector(".area-name-text").classList.add("text-zinc-950");
+          tab.querySelector(".area-name-text").classList.remove("text-zinc-800");
+          
+          updateActiveStudyCard(studyId);
+        };
+
+        tab.addEventListener("mouseenter", activateTab);
+        tab.addEventListener("click", activateTab);
+      });
+
+      // Activate first tab by default
+      if (tabs.length > 0) {
+        tabs[0].classList.add("border-teal-500", "shadow-md", "translate-x-1");
+        tabs[0].classList.remove("border-zinc-200");
+        tabs[0].querySelector(".vertical-strip").classList.add("bg-teal-500");
+        tabs[0].querySelector(".area-name-text").classList.add("text-zinc-950");
+        updateActiveStudyCard(researchAreas[0].studyId);
+      }
+    }
+
+    // Render Dashboard Table
+    function renderDashboardTable() {
+      const tableBody = document.getElementById("validation-dashboard-body");
+      tableBody.innerHTML = validationDashboard.map(row => `
+        <tr class="hover:bg-slate-50/50 transition-colors">
+          <td class="whitespace-nowrap px-8 py-5 font-semibold text-zinc-900">${row.metric}</td>
+          <td class="whitespace-nowrap px-8 py-5 font-mono font-bold text-teal-600">${row.value}</td>
+          <td class="whitespace-nowrap px-8 py-5 text-zinc-500 font-light">${row.method}</td>
+          <td class="whitespace-nowrap px-8 py-5 text-right font-mono">
+            <span class="inline-flex items-center gap-1.5 text-emerald-600 bg-emerald-50 border border-emerald-200/50 px-3 py-1 rounded-full font-medium text-xs">
+              <i data-lucide="check-circle-2" class="h-3.5 w-3.5"></i>
+              VALIDATED
+            </span>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    // Timeline Line Progress Tracking
+    function initTimelineProgress() {
+      const timelineContainer = document.getElementById("timeline-container");
+      const progressLine = document.getElementById("timeline-progress");
+
+      const handleScroll = () => {
+        if (!timelineContainer || !progressLine) return;
+        const rect = timelineContainer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        const triggerPoint = windowHeight * 0.7;
+        const scrolled = triggerPoint - rect.top;
+        const totalHeight = rect.height;
+        
+        let percentage = (scrolled / totalHeight) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+        progressLine.style.height = `${percentage}%`;
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+    }
+
+    // Scroll Anim Item Observer
+    function initScrollObserver() {
+      const items = document.querySelectorAll(".scroll-anim-item");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-4");
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      items.forEach(item => observer.observe(item));
+    }
+
+    // 3. Initialize everything on load
+    window.addEventListener("DOMContentLoaded", () => {
+      renderResearchAreas();
+      initInteractiveGrid();
+      renderDashboardTable();
+      initTimelineProgress();
+      initScrollObserver();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

@@ -1,19 +1,318 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  ArrowRight,
+  Microscope,
+  FlaskConical,
+  Layers,
+  Dna,
+  HeartPulse,
+  Atom,
+  Beaker,
+  TestTubes,
+  BookOpen,
+  Users,
+  Building2,
+  ChevronRight,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const productCategories = [
+  {
+    id: "bioprinters",
+    label: "Bioprinters",
+    icon: Microscope,
+    color: "#1E40AF",
+    bg: "#EFF6FF",
+    items: [
+      {
+        name: "BioTron V1",
+        description: "Multi-cartridge industrial assembly",
+        href: "/products/bioprinters/biotron-v1",
+        icon: Atom,
+      },
+      {
+        name: "BioTron V2",
+        description: "Intelligent portable chamber",
+        href: "/products/bioprinters/biotron-v2",
+        icon: HeartPulse,
+      },
+    ],
+  },
+  {
+    id: "bioinks",
+    label: "Bioinks & Materials",
+    icon: FlaskConical,
+    color: "#065F46",
+    bg: "#ECFDF5",
+    items: [
+      {
+        name: "Ready to Use",
+        description: "Pre-optimised cell-laden hydrogels",
+        href: "/products#bioinks",
+        icon: Beaker,
+      },
+      {
+        name: "Training Bioinks",
+        description: "Calibration & workflow optimisation",
+        href: "/products#bioinks",
+        icon: TestTubes,
+      },
+      {
+        name: "BioTron Inks",
+        description: "Proprietary formulations",
+        href: "/products#bioinks",
+        icon: Dna,
+      },
+      {
+        name: "Base Materials",
+        description: "Collagen, GelMA & custom matrices",
+        href: "/products#base-materials",
+        icon: Layers,
+      },
+    ],
+  },
+];
+
+const aboutItems = [
+  {
+    name: "Our Story",
+    description: "Origins of precision bioprinting",
+    href: "/about#story",
+    icon: BookOpen,
+  },
+  {
+    name: "Technology",
+    description: "The science behind Celutron",
+    href: "/about#technology",
+    icon: Atom,
+  },
+  {
+    name: "Founders",
+    description: "Meet the team",
+    href: "/about#founders",
+    icon: Users,
+  },
+  {
+    name: "Partners",
+    description: "Global research network",
+    href: "/about#partners",
+    icon: Building2,
+  },
+];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function ProductsMega({ close }: { close: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 12, scale: 0.98 }}
+      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-1"
+      style={{ width: 680 }}
+    >
+      {/* Arrow notch */}
+      <div
+        className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white border-l border-t border-clinical-border"
+        style={{ zIndex: 1 }}
+      />
+
+      <div
+        className="relative bg-white border border-clinical-border overflow-hidden"
+        style={{
+          boxShadow:
+            "0 20px 60px -10px rgba(15,23,42,0.12), 0 4px 16px -4px rgba(15,23,42,0.06)",
+        }}
+      >
+        {/* Top bar */}
+        <div className="flex items-center justify-between border-b border-clinical-border px-6 py-3 bg-clinical-surface">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-clinical-text/40 font-semibold">
+            Celutron Platform
+          </span>
+          <Link
+            href="/products"
+            onClick={close}
+            className="flex items-center gap-1 text-xs font-semibold text-clinical-accent hover:underline"
+          >
+            View all products <ChevronRight className="w-3 h-3" />
+          </Link>
+        </div>
+
+        {/* Body */}
+        <div className="grid grid-cols-2 divide-x divide-clinical-border">
+          {productCategories.map((cat) => {
+            const CatIcon = cat.icon;
+            return (
+              <div key={cat.id} className="p-5">
+                {/* Category header */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div
+                    className="flex items-center justify-center w-7 h-7 rounded"
+                    style={{ background: cat.bg }}
+                  >
+                    <CatIcon
+                      className="w-4 h-4"
+                      style={{ color: cat.color }}
+                    />
+                  </div>
+                  <h3
+                    className="font-semibold text-xs tracking-wider uppercase"
+                    style={{ color: cat.color }}
+                  >
+                    {cat.label}
+                  </h3>
+                </div>
+
+                {/* Items */}
+                <ul className="space-y-1">
+                  {cat.items.map((item) => {
+                    const ItemIcon = item.icon;
+                    return (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-clinical-surface transition-colors duration-150"
+                        >
+                          <div
+                            className="mt-0.5 flex items-center justify-center w-7 h-7 rounded shrink-0 transition-colors duration-150 group-hover:bg-white"
+                            style={{ background: cat.bg }}
+                          >
+                            <ItemIcon
+                              className="w-3.5 h-3.5"
+                              style={{ color: cat.color }}
+                            />
+                          </div>
+                          <div>
+                            <div className="text-sm font-medium text-clinical-text group-hover:text-clinical-accent transition-colors duration-150">
+                              {item.name}
+                            </div>
+                            <div className="text-xs text-clinical-text/50 mt-0.5">
+                              {item.description}
+                            </div>
+                          </div>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Footer CTA */}
+        <div className="border-t border-clinical-border bg-clinical-surface px-6 py-3 flex items-center justify-between">
+          <p className="text-xs text-clinical-text/50">
+            Need a custom formulation or enterprise quote?
+          </p>
+          <Link
+            href="/contact"
+            onClick={close}
+            className="flex items-center gap-1.5 text-xs font-semibold text-white bg-clinical-accent px-3 py-1.5 hover:opacity-90 transition-opacity"
+          >
+            Talk to us <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function AboutMega({ close }: { close: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 12, scale: 0.98 }}
+      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-1"
+      style={{ width: 360 }}
+    >
+      {/* Arrow notch */}
+      <div
+        className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white border-l border-t border-clinical-border"
+        style={{ zIndex: 1 }}
+      />
+
+      <div
+        className="relative bg-white border border-clinical-border overflow-hidden"
+        style={{
+          boxShadow:
+            "0 20px 60px -10px rgba(15,23,42,0.12), 0 4px 16px -4px rgba(15,23,42,0.06)",
+        }}
+      >
+        <div className="border-b border-clinical-border px-5 py-3 bg-clinical-surface">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-clinical-text/40 font-semibold">
+            Company
+          </span>
+        </div>
+
+        <ul className="p-3 space-y-1">
+          {aboutItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={close}
+                  className="group flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-clinical-surface transition-colors duration-150"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded bg-[#EFF6FF] shrink-0">
+                    <Icon className="w-4 h-4 text-clinical-accent" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-clinical-text group-hover:text-clinical-accent transition-colors duration-150">
+                      {item.name}
+                    </div>
+                    <div className="text-xs text-clinical-text/50 mt-0.5">
+                      {item.description}
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Main NavBar ──────────────────────────────────────────────────────────────
+
 export default function NavBar() {
-  const [activeDropdown, setActiveDropdown] = useState<"products" | "about" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<
+    "products" | "about" | null
+  >(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = (name: "products" | "about") => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setActiveDropdown(name);
+  };
+
+  const scheduleClose = () => {
+    closeTimeout.current = setTimeout(() => setActiveDropdown(null), 120);
+  };
+
+  const close = () => setActiveDropdown(null);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-clinical-border bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo Left */}
+        {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -27,120 +326,34 @@ export default function NavBar() {
           </Link>
         </div>
 
-        {/* Navigation Center (Desktop) */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {/* Products Dropdown */}
+          {/* Products — button navigates, hover shows mega */}
           <div
             className="relative"
-            onMouseEnter={() => setActiveDropdown("products")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            onMouseEnter={() => openDropdown("products")}
+            onMouseLeave={scheduleClose}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5">
+            <Link
+              href="/products"
+              className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5"
+            >
               Products
-              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === "products" ? "rotate-180" : ""}`} />
-            </button>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  activeDropdown === "products" ? "rotate-180" : ""
+                }`}
+              />
+            </Link>
 
             <AnimatePresence>
               {activeDropdown === "products" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute left-1/2 -translate-x-1/2 top-full w-[480px] border border-clinical-border bg-white p-6 grid grid-cols-2 gap-8"
-                  style={{ boxShadow: "0 4px 20px -2px rgba(15, 23, 42, 0.05)" }}
+                <div
+                  onMouseEnter={() => openDropdown("products")}
+                  onMouseLeave={scheduleClose}
                 >
-                  {/* Bioprinters */}
-                  <div>
-                    <h3 className="font-mono text-xs font-semibold tracking-wider text-clinical-text/40 uppercase mb-3">
-                      Bioprinters
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link
-                          href="/products/bioprinters/biotron-v1"
-                          onClick={() => setActiveDropdown(null)}
-                          className="group block"
-                        >
-                          <div className="text-sm font-medium text-clinical-text hover:text-clinical-accent transition-colors">
-                            BioTron V1
-                          </div>
-                          <div className="text-xs text-clinical-text/50">
-                            Multi-cartridge assembly
-                          </div>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products/bioprinters/biotron-v2"
-                          onClick={() => setActiveDropdown(null)}
-                          className="group block"
-                        >
-                          <div className="text-sm font-medium text-clinical-text hover:text-clinical-accent transition-colors">
-                            BioTron V2
-                          </div>
-                          <div className="text-xs text-clinical-text/50">
-                            Intelligent portable chamber
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Bioinks */}
-                  <div>
-                    <h3 className="font-mono text-xs font-semibold tracking-wider text-clinical-text/40 uppercase mb-3">
-                      Bioinks & Materials
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link
-                          href="/products#bioinks"
-                          onClick={() => setActiveDropdown(null)}
-                          className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-0.5"
-                        >
-                          Ready to Use
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products#bioinks"
-                          onClick={() => setActiveDropdown(null)}
-                          className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-0.5"
-                        >
-                          Training Bioinks
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products#bioinks"
-                          onClick={() => setActiveDropdown(null)}
-                          className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-0.5"
-                        >
-                          BioTron Inks
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products#base-materials"
-                          onClick={() => setActiveDropdown(null)}
-                          className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-0.5"
-                        >
-                          Base Materials
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/contact"
-                          onClick={() => setActiveDropdown(null)}
-                          className="block text-sm text-clinical-accent font-medium hover:underline py-0.5"
-                        >
-                          Custom Formulation →
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
+                  <ProductsMega close={close} />
+                </div>
               )}
             </AnimatePresence>
           </div>
@@ -153,49 +366,32 @@ export default function NavBar() {
             Research
           </Link>
 
-          {/* About Dropdown */}
+          {/* About dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setActiveDropdown("about")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            onMouseEnter={() => openDropdown("about")}
+            onMouseLeave={scheduleClose}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5">
+            <Link
+              href="/about"
+              className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5"
+            >
               About
-              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === "about" ? "rotate-180" : ""}`} />
-            </button>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  activeDropdown === "about" ? "rotate-180" : ""
+                }`}
+              />
+            </Link>
 
             <AnimatePresence>
               {activeDropdown === "about" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute left-0 top-full w-48 border border-clinical-border bg-white p-4 space-y-2"
-                  style={{ boxShadow: "0 4px 20px -2px rgba(15, 23, 42, 0.05)" }}
+                <div
+                  onMouseEnter={() => openDropdown("about")}
+                  onMouseLeave={scheduleClose}
                 >
-                  <Link
-                    href="/about#story"
-                    onClick={() => setActiveDropdown(null)}
-                    className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-1"
-                  >
-                    Our Story
-                  </Link>
-                  <Link
-                    href="/about#technology"
-                    onClick={() => setActiveDropdown(null)}
-                    className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-1"
-                  >
-                    Technology
-                  </Link>
-                  <Link
-                    href="/about#founders"
-                    onClick={() => setActiveDropdown(null)}
-                    className="block text-sm text-clinical-text hover:text-clinical-accent transition-colors py-1"
-                  >
-                    Founders
-                  </Link>
-                </motion.div>
+                  <AboutMega close={close} />
+                </div>
               )}
             </AnimatePresence>
           </div>
@@ -209,29 +405,33 @@ export default function NavBar() {
           </Link>
         </nav>
 
-        {/* CTA Right */}
+        {/* CTA */}
         <div className="hidden md:flex items-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center border border-clinical-accent bg-clinical-accent px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-clinical-accent transition-all duration-200"
+            className="inline-flex items-center justify-center gap-1.5 border border-clinical-accent bg-clinical-accent px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-clinical-accent transition-all duration-200"
           >
             Partner With Us
           </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile toggle */}
         <div className="flex md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-clinical-text/80 hover:text-clinical-accent p-1"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -240,33 +440,39 @@ export default function NavBar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-clinical-border bg-white px-4 py-4 space-y-4"
           >
+            {/* Products */}
             <div className="space-y-1">
-              <div className="font-mono text-[10px] uppercase tracking-wider text-clinical-text/30 font-bold px-3 py-1">
-                Products
+              <div className="flex items-center justify-between px-3 py-1">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-clinical-text/30 font-bold">
+                  Products
+                </span>
+                <Link
+                  href="/products"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xs font-semibold text-clinical-accent flex items-center gap-1"
+                >
+                  View all <ChevronRight className="w-3 h-3" />
+                </Link>
               </div>
-              <Link
-                href="/products/bioprinters/biotron-v1"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
-              >
-                BioTron V1 (Industrial)
-              </Link>
-              <Link
-                href="/products/bioprinters/biotron-v2"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
-              >
-                BioTron V2 (Portable)
-              </Link>
-              <Link
-                href="/products#bioinks"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
-              >
-                Bioinks & Materials
-              </Link>
+              {productCategories.flatMap((cat) =>
+                cat.items.map((item) => {
+                  const ItemIcon = item.icon;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors rounded-lg"
+                    >
+                      <ItemIcon className="w-4 h-4 text-clinical-accent shrink-0" />
+                      {item.name}
+                    </Link>
+                  );
+                })
+              )}
             </div>
 
+            {/* Company */}
             <div className="space-y-1">
               <div className="font-mono text-[10px] uppercase tracking-wider text-clinical-text/30 font-bold px-3 py-1">
                 Company
@@ -274,22 +480,31 @@ export default function NavBar() {
               <Link
                 href="/research"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
+                className="flex items-center gap-3 px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors rounded-lg"
               >
+                <BookOpen className="w-4 h-4 text-clinical-accent shrink-0" />
                 Research
               </Link>
-              <Link
-                href="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
-              >
-                About Us
-              </Link>
+              {aboutItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors rounded-lg"
+                  >
+                    <Icon className="w-4 h-4 text-clinical-accent shrink-0" />
+                    {item.name}
+                  </Link>
+                );
+              })}
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors"
+                className="flex items-center gap-3 px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors rounded-lg"
               >
+                <HeartPulse className="w-4 h-4 text-clinical-accent shrink-0" />
                 Contact
               </Link>
             </div>

@@ -182,16 +182,16 @@ export default function ApplicationsInteractive() {
           
           {/* Section Header */}
           <div className="mb-14 space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 bg-clinical-accent" />
-              <span className="font-mono text-xs font-semibold tracking-wider text-clinical-accent uppercase">
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50/90 px-4 py-1.5 text-xs font-mono font-medium text-teal-900 shadow-sm backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
+              <span className="font-mono text-xs font-semibold tracking-wider text-teal-900 uppercase">
                 APPLICATIONS
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-clinical-text leading-tight">
-              What we are <span className="font-semibold text-clinical-accent">building towards</span>.
+            <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-zinc-950 leading-tight">
+              What we are <span className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">building towards</span>.
             </h2>
-            <p className="text-sm text-slate-500 font-light max-w-xl leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-600 font-light max-w-xl leading-relaxed">
               Our technology platform is directed towards engineering functional biological structures, aiming to replace complex tissues and diagnostic systems.
             </p>
           </div>
@@ -202,7 +202,7 @@ export default function ApplicationsInteractive() {
             {/* Left Column: Minimalistic List */}
             <div className="lg:col-span-5 relative">
               {/* Elegant Vertical Line Track */}
-              <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-slate-100" />
+              <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-zinc-200" />
               
               <div className="space-y-6 relative">
                 {focusAreas.map((item, index) => {
@@ -218,7 +218,7 @@ export default function ApplicationsInteractive() {
                       {isActive && (
                         <motion.div
                           layoutId="active-indicator"
-                          className="absolute left-0 top-1.5 bottom-1.5 w-[2px] bg-clinical-accent"
+                          className="absolute left-0 top-1.5 bottom-1.5 w-[2.5px] bg-teal-600 rounded-full"
                           transition={{ type: "spring", stiffness: 350, damping: 35 }}
                         />
                       )}
@@ -226,12 +226,12 @@ export default function ApplicationsInteractive() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-3">
                           <span className={`font-mono text-xs font-semibold transition-colors duration-300 ${
-                            isActive ? "text-clinical-accent" : "text-slate-400 group-hover:text-slate-500"
+                            isActive ? "text-teal-700" : "text-zinc-400 group-hover:text-teal-600"
                           }`}>
                             {item.id}
                           </span>
                           <h3 className={`text-lg font-medium transition-colors duration-300 ${
-                            isActive ? "text-slate-900" : "text-slate-400 group-hover:text-slate-500"
+                            isActive ? "text-zinc-950 font-bold" : "text-zinc-500 group-hover:text-zinc-800"
                           }`}>
                             {item.area}
                           </h3>

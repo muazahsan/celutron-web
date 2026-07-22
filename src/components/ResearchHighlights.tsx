@@ -39,9 +39,9 @@ export default function ResearchHighlights() {
   ];
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden border-b border-clinical-border">
+    <section className="py-32 bg-white relative overflow-hidden border-b border-zinc-200">
       {/* Background Subtle Elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30" />
+      <div className="absolute inset-0 pointer-events-none animate-blueprint-grid opacity-50" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -50,13 +50,13 @@ export default function ResearchHighlights() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-clinical-surface border border-clinical-border shadow-sm"
+            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-teal-50/90 border border-teal-200 shadow-sm"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-clinical-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-clinical-accent"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-600"></span>
             </span>
-            <span className="font-mono text-xs font-semibold tracking-widest text-clinical-text uppercase">
+            <span className="font-mono text-xs font-semibold tracking-widest text-teal-900 uppercase">
               Clinical Research
             </span>
           </motion.div>
@@ -65,10 +65,10 @@ export default function ResearchHighlights() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl font-light tracking-tight text-clinical-text sm:text-5xl md:text-6xl"
+            className="text-4xl font-light tracking-tight text-zinc-950 sm:text-5xl md:text-6xl"
           >
             Validated. Peer-reviewed. <br className="hidden md:block" />
-            <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-clinical-accent to-blue-700">Clinically directed.</span>
+            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">Clinically directed.</span>
           </motion.h2>
         </div>
 
@@ -88,7 +88,7 @@ export default function ResearchHighlights() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="absolute -inset-px rounded-2xl bg-gradient-to-b from-clinical-accent/30 to-transparent blur-sm z-0"
+                    className="absolute -inset-px rounded-2xl bg-gradient-to-b from-teal-500/20 to-transparent blur-sm z-0"
                   />
                 )}
               </AnimatePresence>
@@ -98,13 +98,8 @@ export default function ResearchHighlights() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 + 0.2 }}
-                className={`relative flex flex-col justify-between h-full p-8 rounded-2xl border border-clinical-border bg-white transition-all duration-300 z-10 ${
-                  hoveredIndex === idx ? "shadow-2xl shadow-blue-900/5 -translate-y-1" : "shadow-sm"
-                }`}
+                className="relative z-10 flex flex-col justify-between h-full bg-white border border-zinc-200 rounded-2xl p-8 transition-all duration-300 group-hover:border-teal-300 shadow-sm group-hover:shadow-md"
               >
-                {/* Subtle Gradient Background */}
-                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${study.color} rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
                 <div className="relative z-10 space-y-6">
                   {/* Icon & Title */}
                   <div className="flex flex-col gap-5">

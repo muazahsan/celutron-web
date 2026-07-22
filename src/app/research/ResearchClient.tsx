@@ -1,27 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { 
-  Microscope, 
-  ArrowRight, 
-  Layers, 
-  Activity, 
-  Shield, 
-  Award, 
-  Calendar, 
   CheckCircle2, 
   ChevronRight, 
   Info,
-  Clock,
-  Dna,
-  Cpu,
-  TrendingUp,
-  Sliders,
-  FileText
+  Cpu
 } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import CollaborateCTA from "@/components/CollaborateCTA";
 
 // Research Areas and mapped study references
 const researchAreas = [
@@ -446,8 +434,8 @@ export default function ResearchClient() {
                       <line x1="245" y1="147" x2="155" y2="182" stroke="#cbd5e1" strokeWidth="0.5" />
                       
                       <polygon points="200,140 290,105 200,70 110,105" fill="none" stroke="#94a3b8" strokeWidth="1" />
-                      <line x1="155" y1="87" x2="245" y2="122" stroke="#94a3b8" stroke-width="0.5" />
-                      <line x1="245" y1="87" x2="155" y2="122" stroke="#94a3b8" stroke-width="0.5" />
+                      <line x1="155" y1="87" x2="245" y2="122" stroke="#94a3b8" strokeWidth="0.5" />
+                      <line x1="245" y1="87" x2="155" y2="122" stroke="#94a3b8" strokeWidth="0.5" />
 
                       <line x1="110" y1="225" x2="110" y2="105" stroke="#64748b" strokeWidth="0.8" strokeDasharray="3,3" />
                       <line x1="290" y1="225" x2="290" y2="105" stroke="#64748b" strokeWidth="0.8" strokeDasharray="3,3" />
@@ -528,8 +516,8 @@ export default function ResearchClient() {
                       <polygon points="80,130 90,120 100,130 95,145 85,145" fill="#94a3b8" stroke="#475569" strokeWidth="0.8" />
                       <polygon points="110,230 120,220 130,230 125,245 115,245" fill="#94a3b8" stroke="#475569" strokeWidth="0.8" />
 
-                      <path d="M 140,90 Q 180,95 200,95 T 250,95" fill="none" stroke="#0d9488" strokeWidth="1.2" stroke-dasharray="3,2" markerEnd="url(#arrow)" />
-                      <path d="M 150,210 Q 185,205 200,205 T 250,205" fill="none" stroke="#0d9488" strokeWidth="1.2" stroke-dasharray="3,2" markerEnd="url(#arrow)" />
+                      <path d="M 140,90 Q 180,95 200,95 T 250,95" fill="none" stroke="#0d9488" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrow)" />
+                      <path d="M 150,210 Q 185,205 200,205 T 250,205" fill="none" stroke="#0d9488" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrow)" />
 
                       <rect x="250" y="20" width="130" height="35" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
                       <text x="260" y="40" fontFamily="monospace" fontSize="9" fill="#0f172a" fontWeight="bold">J = -D * (dC/dx)</text>
@@ -1136,47 +1124,17 @@ export default function ResearchClient() {
           </div>
         </section>
 
-        {/* Section 7: Collaborate CTA (Expanded) */}
-        <section className="bg-zinc-950 text-white py-28 relative overflow-hidden">
-          {/* subtle grid element */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <svg className="h-full w-full stroke-white">
-              <defs>
-                <pattern id="cta-grid-expanded" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M.5 40V.5H40" fill="none" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#cta-grid-expanded)" />
-            </svg>
-          </div>
-
-          <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 text-center space-y-10 relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-4 py-1.5 text-xs sm:text-sm font-mono text-teal-400">
-              JOINT SCIENTIFIC VENTURES
-            </div>
-            <h2 className="text-4xl font-light tracking-tight sm:text-6xl max-w-4xl mx-auto leading-tight">
-              Working on <span className="font-extrabold text-teal-405 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">something similar?</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-              We welcome collaborative opportunities, joint university publications, clinical trial partnerships, and institutional research inquiries.
-            </p>
-            <div className="pt-6 flex flex-col sm:flex-row justify-center items-center gap-5">
-              <Link
-                href="/contact?type=collaboration"
-                className="inline-flex w-full sm:w-auto items-center justify-center border border-teal-500 bg-teal-500 px-8 py-4 text-base font-semibold text-zinc-950 hover:bg-transparent hover:text-white transition-all duration-200"
-              >
-                Initiate Research Proposal
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center border border-zinc-700 bg-transparent px-8 py-4 text-base font-semibold text-zinc-300 hover:border-zinc-500 hover:text-white transition-all duration-200"
-              >
-                Inquire Bio-materials Access
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* Section 7: Collaborate CTA */}
+        <CollaborateCTA
+          badge="JOINT SCIENTIFIC VENTURES"
+          titlePrefix="Working on "
+          titleHighlight="something similar?"
+          subtitle="We welcome collaborative opportunities, joint university publications, clinical trial partnerships, and institutional research inquiries."
+          primaryButtonText="Initiate Research Proposal"
+          primaryButtonHref="/contact?type=collaboration"
+          secondaryButtonText="Inquire Bio-materials Access"
+          secondaryButtonHref="/contact"
+        />
       </main>
 
       <Footer />

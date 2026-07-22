@@ -12,6 +12,7 @@ import PurposeInteractive from "@/components/PurposeInteractive";
 import ApplicationsInteractive from "@/components/ApplicationsInteractive";
 import WhatWeProvide from "@/components/WhatWeProvide";
 import ResearchHighlights from "@/components/ResearchHighlights";
+import CollaborateCTA from "@/components/CollaborateCTA";
 
 export default function Home() {
 
@@ -36,22 +37,23 @@ export default function Home() {
         <FundamentalsTriad />
 
         {/* Section 4: BioTron Explainer */}
-        <section className="py-24 bg-clinical-surface border-b border-clinical-border">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="py-24 bg-slate-50 border-b border-zinc-200 relative overflow-hidden">
+          {/* Engineering grid pattern background */}
+          <div className="absolute inset-0 pointer-events-none animate-clinical-grid" />
+          
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
               {/* Text Left */}
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-clinical-accent" />
-                  <span className="font-mono text-xs font-semibold tracking-wider text-clinical-accent uppercase">
-                    OUR PLATFORM
-                  </span>
+                <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50/90 px-4 py-1.5 text-xs font-mono font-medium text-teal-900 shadow-sm backdrop-blur-sm">
+                  <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
+                  OUR PLATFORM
                 </div>
-                <h2 className="text-3xl font-light tracking-tight text-clinical-text sm:text-4xl">
-                  A bioprinter built for <span className="font-semibold">the lab bench</span>.
+                <h2 className="text-3xl font-light tracking-tight text-zinc-950 sm:text-4xl">
+                  A bioprinter built for <span className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">the lab bench</span>.
                 </h2>
-                <div className="space-y-4 text-sm text-clinical-text/70 leading-relaxed font-light">
-                  <p className="font-semibold text-clinical-text">
+                <div className="space-y-4 text-sm text-zinc-700 leading-relaxed font-light">
+                  <p className="font-semibold text-zinc-900 text-base">
                     Load your bioink. Set your structure. Press print.
                   </p>
                   <p>
@@ -64,7 +66,7 @@ export default function Home() {
                 <div className="pt-2">
                   <Link
                     href="/products/bioprinters/biotron-v2"
-                    className="inline-flex items-center justify-center border border-clinical-accent bg-clinical-accent px-5 py-3 text-sm font-semibold text-white hover:bg-white hover:text-clinical-accent transition-all duration-200"
+                    className="inline-flex items-center justify-center rounded-lg bg-teal-900 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-950 shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     See BioTron Specs
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -73,16 +75,17 @@ export default function Home() {
               </div>
 
               {/* Visual Right */}
-              <div className="relative border border-clinical-border bg-white p-4">
+              <div className="relative rounded-2xl border border-zinc-200 bg-white p-3 shadow-md overflow-hidden group">
                 <Image
                   src="/assets/biotron-v2.jpg"
                   alt="BioTron V2 Printer"
                   width={600}
                   height={400}
-                  className="w-full h-auto object-cover border border-clinical-border"
+                  className="w-full h-auto object-cover rounded-xl border border-zinc-100 group-hover:scale-[1.01] transition-transform duration-300"
                 />
-                <div className="absolute top-8 right-8 bg-clinical-text/90 px-3 py-1.5 border border-white/10 backdrop-blur-sm">
-                  <span className="font-mono text-[9px] font-bold text-white tracking-widest">
+                <div className="absolute top-6 right-6 bg-teal-950/90 px-3.5 py-1.5 rounded-full border border-teal-400/20 backdrop-blur-md shadow-sm">
+                  <span className="font-mono text-[9px] font-bold text-emerald-300 tracking-widest flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     SYSTEM STATUS: READY
                   </span>
                 </div>
@@ -99,26 +102,8 @@ export default function Home() {
 
         <ResearchHighlights />
 
-        {/* Section 8: Contact CTA Strip */}
-        <section className="bg-clinical-accent text-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
-              Ready to <span className="font-semibold">collaborate?</span>
-            </h2>
-            <p className="text-base text-white/80 max-w-xl mx-auto font-light leading-relaxed">
-              Whether you&apos;re a researcher, hospital, or investor — let&apos;s build something that matters.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center border border-white bg-white px-6 py-3 text-sm font-semibold text-clinical-accent hover:bg-transparent hover:text-white transition-all duration-200"
-              >
-                Get In Touch
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* Section 8: Collaborate CTA */}
+        <CollaborateCTA />
       </main>
 
       <Footer />

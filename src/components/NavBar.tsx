@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Menu,
@@ -30,8 +31,8 @@ const productCategories = [
     id: "bioprinters",
     label: "Bioprinters",
     icon: Microscope,
-    color: "#1E40AF",
-    bg: "#EFF6FF",
+    color: "#0F766E",
+    bg: "#F0FDFA",
     items: [
       {
         name: "BioTron V1",
@@ -51,7 +52,7 @@ const productCategories = [
     id: "bioinks",
     label: "Bioinks & Materials",
     icon: FlaskConical,
-    color: "#065F46",
+    color: "#047857",
     bg: "#ECFDF5",
     items: [
       {
@@ -118,7 +119,7 @@ function ProductsMega({ close }: { close: () => void }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 12, scale: 0.98 }}
       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute left-1/2 -translate-x-1/2 top-full mt-1"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-1 text-clinical-text"
       style={{ width: 680 }}
     >
       {/* Arrow notch */}
@@ -236,7 +237,7 @@ function AboutMega({ close }: { close: () => void }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 12, scale: 0.98 }}
       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute left-1/2 -translate-x-1/2 top-full mt-1"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-1 text-clinical-text"
       style={{ width: 360 }}
     >
       {/* Arrow notch */}
@@ -292,11 +293,29 @@ function AboutMega({ close }: { close: () => void }) {
 // ─── Main NavBar ──────────────────────────────────────────────────────────────
 
 export default function NavBar() {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<
     "products" | "about" | null
   >(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Keep transparent throughout the hero section (until user scrolls 60% of screen height)
+      if (window.scrollY > window.innerHeight * 0.6) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isHeroTransparent = (pathname === "/" || pathname === "") && !isScrolled;
 
   const openDropdown = (name: "products" | "about") => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -310,7 +329,13 @@ export default function NavBar() {
   const close = () => setActiveDropdown(null);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-clinical-border bg-white/95 backdrop-blur-md">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+        isHeroTransparent
+          ? "bg-transparent text-white border-b border-transparent"
+          : "bg-white/95 backdrop-blur-md border-b border-clinical-border text-clinical-text shadow-sm"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="flex items-center">
@@ -318,9 +343,11 @@ export default function NavBar() {
             <Image
               src="/assets/celutron-logo-v2"
               alt="Celutron Logo"
-              width={100}
-              height={32}
-              className="h-8 w-auto object-contain"
+              width={110}
+              height={36}
+              className={`h-8 w-auto object-contain transition-all duration-300 ${
+                isHeroTransparent ? "invert mix-blend-screen" : "mix-blend-multiply"
+              }`}
               priority
             />
           </Link>
@@ -336,13 +363,17 @@ export default function NavBar() {
           >
             <Link
               href="/products"
-              className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5"
+              className={`flex items-center gap-1 text-sm font-semibold tracking-wider transition-colors py-5 uppercase ${
+                isHeroTransparent
+                  ? "text-white/90 hover:text-emerald-300"
+                  : "text-clinical-text/80 hover:text-clinical-accent"
+              }`}
             >
               Products
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-200 ${
                   activeDropdown === "products" ? "rotate-180" : ""
-                }`}
+                } ${isHeroTransparent ? "text-white/70" : ""}`}
               />
             </Link>
 
@@ -361,9 +392,25 @@ export default function NavBar() {
           {/* Research */}
           <Link
             href="/research"
-            className="text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors"
+            className={`text-sm font-semibold tracking-wider transition-colors uppercase ${
+              isHeroTransparent
+                ? "text-white/90 hover:text-emerald-300"
+                : "text-clinical-text/80 hover:text-clinical-accent"
+            }`}
           >
             Research
+          </Link>
+
+          {/* Careers */}
+          <Link
+            href="/careers"
+            className={`text-[#09090B] font-sans text-xs font-bold tracking-widest transition-colors uppercase ${
+              isHeroTransparent
+                ? "text-white/90 hover:text-emerald-300"
+                : "text-clinical-text/80 hover:text-clinical-accent"
+            }`}
+          >
+            Careers
           </Link>
 
           {/* About dropdown */}
@@ -374,13 +421,17 @@ export default function NavBar() {
           >
             <Link
               href="/about"
-              className="flex items-center gap-1 text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors py-5"
+              className={`flex items-center gap-1 text-sm font-semibold tracking-wider transition-colors py-5 uppercase ${
+                isHeroTransparent
+                  ? "text-white/90 hover:text-emerald-300"
+                  : "text-clinical-text/80 hover:text-clinical-accent"
+              }`}
             >
               About
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-200 ${
                   activeDropdown === "about" ? "rotate-180" : ""
-                }`}
+                } ${isHeroTransparent ? "text-white/70" : ""}`}
               />
             </Link>
 
@@ -395,23 +446,19 @@ export default function NavBar() {
               )}
             </AnimatePresence>
           </div>
-
-          {/* Contact */}
-          <Link
-            href="/contact"
-            className="text-sm font-medium text-clinical-text/80 hover:text-clinical-accent transition-colors"
-          >
-            Contact
-          </Link>
         </nav>
 
-        {/* CTA */}
+        {/* CTA - CONTACT US on Far Right like Reference */}
         <div className="hidden md:flex items-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-1.5 border border-clinical-accent bg-clinical-accent px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-clinical-accent transition-all duration-200"
+            className={`inline-flex items-center justify-center font-mono text-xs font-bold uppercase tracking-widest pb-0.5 transition-all duration-200 ${
+              isHeroTransparent
+                ? "text-white border-b-2 border-white hover:text-emerald-300 hover:border-emerald-300"
+                : "text-clinical-text border-b-2 border-clinical-text hover:text-teal-800 hover:border-teal-800"
+            }`}
           >
-            Partner With Us
+            CONTACT US
           </Link>
         </div>
 
@@ -500,12 +547,12 @@ export default function NavBar() {
                 );
               })}
               <Link
-                href="/contact"
+                href="/careers"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 px-3 py-2 text-sm text-clinical-text hover:bg-clinical-surface transition-colors rounded-lg"
               >
-                <HeartPulse className="w-4 h-4 text-clinical-accent shrink-0" />
-                Contact
+                <Users className="w-4 h-4 text-clinical-accent shrink-0" />
+                Careers
               </Link>
             </div>
 
@@ -513,9 +560,9 @@ export default function NavBar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between w-full border border-clinical-accent bg-clinical-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-transparent hover:text-clinical-accent transition-all duration-200"
+                className="flex items-center justify-between w-full border border-teal-900 bg-teal-900 px-4 py-2.5 text-sm font-semibold text-white uppercase tracking-wider transition-all duration-200"
               >
-                Partner With Us
+                Contact Us
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

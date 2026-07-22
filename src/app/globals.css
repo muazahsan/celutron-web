@@ -2,10 +2,12 @@
 
 @theme {
   --color-clinical-bg: #FFFFFF;
-  --color-clinical-surface: #FAFAFA;
-  --color-clinical-text: #0F172A;
+  --color-clinical-surface: #F8FAFC;
+  --color-clinical-text: #09090B;
   --color-clinical-border: #E2E8F0;
-  --color-clinical-accent: #1E40AF;
+  --color-clinical-accent: #0F766E;
+  --color-clinical-accent-light: #0D9488;
+  --color-clinical-emerald: #10B981;
   --color-clinical-success: #16A34A;
   --color-clinical-warning: #D97706;
   --color-clinical-danger: #DC2626;
@@ -25,13 +27,17 @@
   --color-primary: var(--color-clinical-accent);
   --color-primary-foreground: #FFFFFF;
   --color-secondary: #F1F5F9;
-  --color-secondary-foreground: #0F172A;
+  --color-secondary-foreground: #09090B;
   --color-accent: #F1F5F9;
-  --color-accent-foreground: #0F172A;
+  --color-accent-foreground: #09090B;
 }
 
 :root {
   color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -49,11 +55,39 @@ body {
   background: var(--color-clinical-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-clinical-border);
+  background: #cbd5e1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: #0f766e;
+}
+
+/* Clinical grid background pattern animations */
+@keyframes grid-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 160px 160px;
+  }
+}
+
+.animate-clinical-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 36 L 40 44 M 36 40 L 44 40' stroke='rgba(13,148,136,0.18)' stroke-width='1'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='rgba(13,148,136,0.12)'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  animation: grid-pan 35s linear infinite;
+}
+
+.animate-hex-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='100' viewBox='0 0 56 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0 L56 16.16 L56 48.48 L28 64.64 L0 48.48 L0 16.16 Z M28 100 L56 83.84 L56 51.52 L28 35.36 L0 51.52 L0 83.84 Z' fill='none' stroke='rgba(16,185,129,0.09)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 100px;
+  animation: grid-pan 45s linear infinite;
+}
+
+.animate-blueprint-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(9,9,11,0.12)'/%3E%3Crect x='0' y='0' width='60' height='60' fill='none' stroke='rgba(9,9,11,0.03)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  animation: grid-pan 50s linear infinite;
 }
 
 /* Clinical layout helper utilities */
@@ -70,6 +104,11 @@ body {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Scroll-triggered item animation utility */
+.scroll-anim-item {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
 /* Stagger animations support */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -80,3 +119,4 @@ body {
     scroll-behavior: auto !important;
   }
 }
+

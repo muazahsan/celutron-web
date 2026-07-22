@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Microscope } from "lucide-react";
 
 interface CardData {
   id: number;
@@ -115,24 +114,13 @@ export default function PurposeInteractive() {
   };
 
   return (
-    <section className="relative py-28 bg-white border-b border-clinical-border overflow-hidden">
+    <section id="purpose" className="relative py-28 bg-slate-50 border-b border-zinc-200 overflow-hidden">
       
-      {/* Grid Pattern Background to match the screenshot design */}
-      <div 
-        className="absolute inset-0 opacity-60 pointer-events-none" 
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #f1f5f9 1px, transparent 1px),
-            linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px"
-        }}
-      />
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 pointer-events-none animate-clinical-grid" />
       
-      {/* Decorative Tech Circle Lines in Background */}
-      <div className="absolute -left-20 -bottom-20 w-96 h-96 rounded-full border border-slate-100/80 pointer-events-none opacity-40" />
-      <div className="absolute -left-40 -bottom-40 w-[480px] h-[480px] rounded-full border border-slate-100/50 pointer-events-none opacity-30" />
-      <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full border border-slate-100/60 pointer-events-none opacity-40" />
+      {/* Decorative Radial Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full filter blur-[120px] pointer-events-none animate-pulse" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -144,20 +132,22 @@ export default function PurposeInteractive() {
           transition={{ duration: 0.6 }}
           className="mb-20 space-y-6 max-w-4xl mx-auto text-center"
         >
-          {/* Biomedical outline badge styled exactly like the screenshot badge */}
-          <div className="inline-flex items-center gap-2 border border-clinical-accent/20 bg-clinical-accent/5 px-3.5 py-1.5 rounded-sm select-none">
-            <Microscope className="h-3.5 w-3.5 text-clinical-accent" />
-            <span className="font-mono text-xs font-semibold tracking-wider text-clinical-accent uppercase">
+          {/* Biomedical outline badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50/90 px-4 py-1.5 text-xs font-mono font-medium text-teal-900 shadow-sm backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
+            <span className="font-mono text-xs font-semibold tracking-wider text-teal-900 uppercase">
               OUR PURPOSE
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-clinical-text leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-zinc-950 leading-tight">
             Rebuilding Human Tissue. <br />
-            Eliminating the Wait List.
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">
+              Eliminating the Wait List.
+            </span>
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto font-light pt-2">
+          <p className="text-base sm:text-lg md:text-xl text-zinc-700 leading-relaxed max-w-3xl mx-auto font-light pt-2">
             Every year, thousands die waiting for organs that never arrive. Celutron exists to end that wait — by growing tissue from your own cells.
           </p>
         </motion.div>
@@ -180,24 +170,24 @@ export default function PurposeInteractive() {
                 whileHover={{ y: -8 }}
                 className={`group flex flex-col items-center justify-start text-center bg-white border p-10 py-16 rounded-3xl cursor-pointer transition-all duration-300 ${
                   isActive
-                    ? "border-clinical-accent shadow-[0_20px_50px_-15px_rgba(30,64,175,0.18)]"
-                    : "border-slate-200 hover:border-slate-300 hover:bg-slate-50/20"
+                    ? "border-teal-600 shadow-xl shadow-teal-900/10 ring-1 ring-teal-500/20"
+                    : "border-zinc-200 hover:border-teal-300 hover:bg-slate-50/50"
                 }`}
               >
                 {/* Icon Container */}
                 <div className={`mb-8 transition-colors duration-300 ${
-                  isActive ? "text-clinical-accent" : "text-slate-400 group-hover:text-slate-600"
+                  isActive ? "text-teal-700" : "text-zinc-400 group-hover:text-teal-600"
                 }`}>
                   {card.icon}
                 </div>
 
                 {/* Subheader */}
-                <h3 className="font-bold text-sm tracking-widest text-slate-800 uppercase mb-5">
+                <h3 className="font-bold text-sm tracking-widest text-zinc-900 uppercase mb-5">
                   {card.label}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base text-slate-500 font-light leading-relaxed">
+                <p className="text-sm sm:text-base text-zinc-600 font-light leading-relaxed">
                   {card.body}
                 </p>
               </motion.div>

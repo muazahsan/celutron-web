@@ -140,16 +140,16 @@ export default function WhatWeProvide({
     <section
       ref={sectionRef}
       className={cn(
-        "relative py-24 sm:py-32 bg-background text-foreground overflow-hidden",
+        "relative py-28 bg-slate-50 text-zinc-950 overflow-hidden border-b border-zinc-200",
         className
       )}
       role="region"
       aria-label="Services"
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_50%)]" />
+      {/* Background pattern */}
+      <div className="absolute inset-0 pointer-events-none animate-clinical-grid" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Section Header */}
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
@@ -158,20 +158,22 @@ export default function WhatWeProvide({
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/50 text-xs font-medium text-muted-foreground mb-6"
+            className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50/90 px-4 py-1.5 text-xs font-mono font-medium text-teal-900 shadow-sm backdrop-blur-sm mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
             CLINICAL-GRADE SOLUTIONS
           </motion.div>
           
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4">
-            {sectionTitle}
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950">
+              {sectionTitle}
+            </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-lg text-zinc-600 leading-relaxed font-light">
             {sectionSubtitle}
           </p>
         </motion.div>
@@ -189,12 +191,12 @@ export default function WhatWeProvide({
               variants={itemVariants}
               className="group"
             >
-              <Card className="relative h-full flex flex-col border border-border bg-card hover:bg-accent/5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/30 hover:-translate-y-1 overflow-hidden">
+              <Card className="relative h-full flex flex-col border border-zinc-200 bg-white rounded-2xl hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl hover:border-teal-400 hover:-translate-y-1 overflow-hidden">
                 {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Number badge */}
-                <div className="absolute top-6 right-6 w-12 h-12 rounded-full border-2 border-border bg-background flex items-center justify-center font-mono text-sm font-bold text-muted-foreground group-hover:border-primary/50 group-hover:text-primary transition-all duration-300">
+                <div className="absolute top-6 right-6 w-10 h-10 rounded-full border border-zinc-200 bg-slate-50 flex items-center justify-center font-mono text-xs font-bold text-zinc-500 group-hover:border-teal-500 group-hover:bg-teal-700 group-hover:text-white transition-all duration-300">
                   {service.number}
                 </div>
 
